@@ -1,0 +1,13 @@
+.register-grid {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.register-options {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 0.5rem;
+    justify-content: center;
+    gap: 1rem;
+}

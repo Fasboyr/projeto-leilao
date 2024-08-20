@@ -11,3 +11,7 @@
     justify-content: center;
     gap: 1rem;
 }
+
+.p-icon-field {
+    width: 100%;
+}

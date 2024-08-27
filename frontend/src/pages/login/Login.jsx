@@ -6,6 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 
 
@@ -14,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () =>{
     const [user, setUser] = useState({email:"", password:""});
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleChange = (input) =>{
         setUser({...user, [input.target.name]:input.target.value});
@@ -33,6 +35,8 @@ const Login = () =>{
         <div className="login-grid">
             <Card title= "Login">
 
+                <h1 className="textColor">Página de Login</h1>
+
                 <div class="field">
                     <InputText onChange={handleChange} name="email" id="email" className="input-field" placeholder="Digite aqui seu email" />
 
@@ -43,7 +47,7 @@ const Login = () =>{
                 </div>
            
                 <div className="button-container">
-                    <Button onClick={login} label="Login" className="login-button" />
+                    <Button onClick={login} label={t('button.login')} className="login-button" />
                 </div>
                 <div className="login-options">
                     <a href="#" className="sign-up">Cadastre-se</a>

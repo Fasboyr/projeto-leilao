@@ -1,6 +1,65 @@
-.header{
+.header {
     border: 1px solid #aaa9a9;
     border-radius: 5px;
     padding: 10px;
-    background-color: #dfdfdf;
+    background-color: #b8ad7d;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    font-size: x-large;
+}
+
+.header h2 {
+    margin: 0;
+    position: absolute;
+    left: 20px;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+}
+
+.nav-left {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+}
+
+.nav-left ul {
+    display: flex;
+    justify-content: center; /* Centraliza os itens na nav-left */
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nav-left ul li {
+    margin-left: 20px; /* Espaço entre os itens */
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nav-right ul li {
+    margin-left: 20px; /* Espaço entre os itens */
+}
+
+.header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.header nav ul li a:hover {
+    text-decoration: underline;
 }

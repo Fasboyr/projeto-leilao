@@ -10,24 +10,27 @@ import Footer from './components/footer/Footer';
 import SimpleLayout from './components/SimpleLayout';
 import DefaultLayout from './components/DefaultLayout';
 import PrivateRouter from './components/PrivateRouter';
+import Background from './components/background/background';
 
 
 function App() {
   return (
     <>
-      {/*<Header/>*/}
       <BrowserRouter>
+      <Header/>
+      <Background>
         <Routes>
           <Route element={<PrivateRouter />}>
-            <Route path='/' element={<DefaultLayout><Home /></DefaultLayout>} />
+            <Route path='/' element={<SimpleLayout><Home /></SimpleLayout>} />
             <Route path='/change' element={<SimpleLayout>< ChangePassword /></SimpleLayout>} />
             <Route path='/recover' element={<SimpleLayout>< RecoverPassword /></SimpleLayout>} />
           </Route>
           <Route path='/login' element={<SimpleLayout><Login /></SimpleLayout>} />
           <Route path='/register' element={<SimpleLayout><Register /></SimpleLayout>} />
         </Routes>
+      </Background>
+      <Footer/>
       </BrowserRouter>
-      {/*<Footer/>*/}
     </>
   );
 }

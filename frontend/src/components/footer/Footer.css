@@ -2,5 +2,71 @@
     border: 1px solid #aaa9a9;
     border-radius: 5px;
     padding: 10px;
-    background-color: #dfdfdf;
+    background-color: #397f0a;
+    color: #fff; /* Garantir que o texto seja visível sobre o fundo verde escuro */
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-info div {
+    margin: 10px;
+    flex: 1;
+}
+
+.footer-info h3 {
+    margin-top: 0;
+}
+
+.footer-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-info ul li {
+    margin: 5px 0;
+}
+
+.footer-info ul li a {
+    color: #fff; /* Cor dos links para contraste com o fundo escuro */
+    text-decoration: none;
+}
+
+.footer-info ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-social a {
+    color: #fff; /* Cor dos ícones das redes sociais */
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.footer-newsletter input {
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+.footer-newsletter button {
+    padding: 10px;
+    background-color: #555; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.footer-newsletter button:hover {
+    background-color: #777; /* Cor do botão ao passar o mouse */
+}
+
+.footer-copyright {
+    margin-top: 20px;
 }

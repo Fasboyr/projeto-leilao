@@ -21,7 +21,6 @@ return(
             Português
         </button>
         <br /><br />
-        <Logout/>
     </div>
 );
 }

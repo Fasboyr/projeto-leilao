@@ -5,6 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
+import Background from '../../components/background/background';
 
 const Register = () => {
     const [password, setPassword] = useState('');

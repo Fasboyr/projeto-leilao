@@ -32,10 +32,9 @@ const Login = () =>{
         }
     }
      return(
+        
         <div className="login-grid">
             <Card title= "Login">
-
-                <h1 className="textColor">Página de Login</h1>
 
                 <div class="field">
                     <InputText onChange={handleChange} name="email" id="email" className="input-field" placeholder="Digite aqui seu email" />

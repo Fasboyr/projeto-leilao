@@ -11,11 +11,14 @@ const Logout = () =>{
         navigate("/login")
     }
     
-    return(
-        <>
-            <Button label="Sair" onClick={logout}/>
-        </>
-    )
+    return (
+        <a href="/login" onClick={(e) => {
+          e.preventDefault(); // Impede o comportamento padrão do link
+          logout();
+        }} style={{ color: 'white', textDecoration: 'none' }}>
+          Logout
+        </a>
+      );
 }
 
 export default Logout;

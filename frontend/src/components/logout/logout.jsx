@@ -13,7 +13,7 @@ const Logout = () =>{
     
     return (
         <a href="/login" onClick={(e) => {
-          e.preventDefault(); // Impede o comportamento padrão do link
+          e.preventDefault(); 
           logout();
         }} style={{ color: 'white', textDecoration: 'none' }}>
           Logout

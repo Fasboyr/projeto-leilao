@@ -1,13 +1,17 @@
 
 .login-grid{
     display: grid;
-        place-items: center;
-        /* Centraliza horizontalmente e verticalmente */
-        height: 100vh;
+    place-items: center;
+    height: 100vh;
+
 }
+.login-background-color {
+    background-color: #d3ebc4;
+}
+
+
 .p-card-title {
     text-align: center;
-    /* Centraliza o título do Card */
 }
 
 
@@ -27,17 +31,13 @@
 .button-container {
     display: flex;
     justify-content: center;
-    /* Centraliza o botão horizontalmente */
     margin-top: 1rem;
 }
 
 .login-button {
     width: 100%;
-    /* Define a largura do botão */
     max-width: 200px;
-    /* Define uma largura máxima */
     height: 3rem;
-    /* Define a altura do botão */
     font-size: 1.1rem;
-    /* Aumenta o tamanho da fonte */
+    background-color: #397f0a;
 }

@@ -1,0 +1,11 @@
+.background {
+    /*background-image: url('../../image/background-3.jpg');*/
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px;
+    box-sizing: border-box;
+}

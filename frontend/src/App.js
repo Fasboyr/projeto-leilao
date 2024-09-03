@@ -10,15 +10,15 @@ import Footer from './components/footer/Footer';
 import SimpleLayout from './components/SimpleLayout';
 import DefaultLayout from './components/DefaultLayout';
 import PrivateRouter from './components/PrivateRouter';
-import Background from './components/background/background';
+import Background from './components/style/background/background';
 
 
 function App() {
   return (
-    <>
+    <div className='background'>
       <BrowserRouter>
-      <Header/>
-      <Background>
+     
+     
         <Routes>
           <Route element={<PrivateRouter />}>
             <Route path='/' element={<SimpleLayout><Home /></SimpleLayout>} />
@@ -28,10 +28,10 @@ function App() {
           <Route path='/login' element={<SimpleLayout><Login /></SimpleLayout>} />
           <Route path='/register' element={<SimpleLayout><Register /></SimpleLayout>} />
         </Routes>
-      </Background>
+      
       <Footer/>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

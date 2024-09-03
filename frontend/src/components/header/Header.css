@@ -2,7 +2,7 @@
     border: 1px solid #aaa9a9;
     border-radius: 5px;
     padding: 10px;
-    background-color: #b8ad7d;
+    background-color: #a19768;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -29,14 +29,14 @@
 
 .nav-left ul {
     display: flex;
-    justify-content: center; /* Centraliza os itens na nav-left */
+    justify-content: center; 
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
 .nav-left ul li {
-    margin-left: 20px; /* Espaço entre os itens */
+    margin-left: 20px; 
 }
 
 .nav-right {
@@ -52,7 +52,7 @@
 }
 
 .nav-right ul li {
-    margin-left: 20px; /* Espaço entre os itens */
+    margin-left: 20px; 
 }
 
 .header nav ul li a {

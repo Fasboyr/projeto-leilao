@@ -34,7 +34,7 @@ const Login = () =>{
      return(
         
         <div className="login-grid">
-            <Card title= "Login">
+             <Card title="Login" className="login-background-color">
 
                 <div class="field">
                     <InputText onChange={handleChange} name="email" id="email" className="input-field" placeholder="Digite aqui seu email" />
@@ -46,7 +46,7 @@ const Login = () =>{
                 </div>
            
                 <div className="button-container">
-                    <Button onClick={login} label={t('button.login')} className="login-button" />
+                     <Button onClick={login} label={t('button.login')} className="login-button"  />
                 </div>
                 <div className="login-options">
                     <a href="#" className="sign-up">Cadastre-se</a>

@@ -3,7 +3,7 @@
     border-radius: 5px;
     padding: 10px;
     background-color: #397f0a;
-    color: #fff; /* Garantir que o texto seja visível sobre o fundo verde escuro */
+    color: #fff; 
 }
 
 .footer-info {
@@ -32,7 +32,7 @@
 }
 
 .footer-info ul li a {
-    color: #fff; /* Cor dos links para contraste com o fundo escuro */
+    color: #fff; 
     text-decoration: none;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .footer-social a {
-    color: #fff; /* Cor dos ícones das redes sociais */
+    color: #fff; 
     margin: 0 10px;
     text-decoration: none;
     font-size: x-large;
@@ -56,15 +56,15 @@
 
 .footer-newsletter button {
     padding: 10px;
-    background-color: #555; /* Cor de fundo do botão */
-    color: #fff; /* Cor do texto do botão */
+    background-color: #555; 
+    color: #fff; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .footer-newsletter button:hover {
-    background-color: #777; /* Cor do botão ao passar o mouse */
+    background-color: #777; 
 }
 
 .footer-copyright {

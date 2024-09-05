@@ -1,0 +1,54 @@
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Define três colunas: esquerda, centro e direita */
+    gap: 20px; /* Espaço entre as colunas */
+    padding: 20px; /* Espaço ao redor do grid */
+  }
+  
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre os cartões */
+  }
+  
+  .center-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre os cartões */
+  }
+  
+  /* Adicionando um ajuste no alinhamento do card para a centralização */
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .card-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .language-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  
+  
+  

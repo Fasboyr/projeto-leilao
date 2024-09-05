@@ -1,13 +1,13 @@
 import React from "react";
 import Footer from "./footer/Footer";
-import Header from "./header/headerLogin/Header";
+import HeaderLogout from "./header/headerLogout/HeaderLogout";
 
 
 const SimpleLayout = ({children}) => {
 
     return (
             <>
-            <Header />
+            <HeaderLogout />
                 {children}
             <Footer/>
             </>

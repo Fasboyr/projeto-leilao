@@ -6,3 +6,9 @@
 .background-color{
     background-color: blue;
 }
+
+.dashboard-grid{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}

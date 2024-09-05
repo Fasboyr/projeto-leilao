@@ -9,6 +9,8 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './config/i18n';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'chart.js/auto';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

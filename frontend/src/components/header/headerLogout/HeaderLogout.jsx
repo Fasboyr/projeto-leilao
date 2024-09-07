@@ -1,25 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./HeaderLogout.module.css";
+import { useTranslation } from "react-i18next";
+import style from "./HeaderLogout.module.css"; // Ajuste conforme necessário
 
-const HeaderLogout = () => {
+const Header = () => {
+    const { t, i18n } = useTranslation();
+
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language);
+    };
+
+    
+
     return (
-        <div className="header">
+        <header className={style.header}>
             <h2>Menu</h2>
-            <nav className="nav-left">
+            <nav className={style.navLeft}>
                 <ul>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/recover">Recupear Senha</Link></li>
-                    <li><Link to="/register">Cadastrar-se</Link></li>
+                    <li><a href="/login">{t('login')}</a></li>
+                    <li><a href="/recover">{t('recoverTitle')}</a></li>
+                    <li><a href="/register">{t('register')}</a></li>
                 </ul>
             </nav>
-            <nav className="nav-right">
-                <ul>
-                    <li><Link to="/login">Login</Link></li>
-                </ul>
+            <nav className={style.navRight}>
+                <button onClick={() => changeLanguage('pt')} className={style.languageButton}>Português</button>
+                <button onClick={() => changeLanguage('en')} className={style.languageButton}>English</button>
             </nav>
-        </div>
+        </header>
     );
 }
 
-export default HeaderLogout;
+export default Header;

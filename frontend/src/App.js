@@ -8,26 +8,26 @@ import ChangePassword from './pages/changepassword/ChangePassword';
 import SimpleLayout from './components/SimpleLayout';
 import DefaultLayout from './components/DefaultLayout';
 import PrivateRouter from './components/PrivateRouter';
-import Background from './components/style/background/background';
 import LogoutLayout from './components/LogoutLayout';
+import ProfilePage from './pages/profile/ProfilePage';
 
 
 function App() {
   return (
-    <div className='background'>
+    <div>
       <BrowserRouter>
-     
-     
+
         <Routes>
           <Route element={<PrivateRouter />}>
             <Route path='/' element={<SimpleLayout><Home /></SimpleLayout>} />
             <Route path='/change' element={<SimpleLayout>< ChangePassword /></SimpleLayout>} />
-            <Route path='/recover' element={<SimpleLayout>< RecoverPassword /></SimpleLayout>} />
+            <Route path='/profile' element={<SimpleLayout><ProfilePage/></SimpleLayout>}></Route>
           </Route>
+          <Route path='/recover' element={<LogoutLayout>< RecoverPassword /></LogoutLayout>} />
           <Route path='/login' element={<LogoutLayout><Login /></LogoutLayout>} />
           <Route path='/register' element={<LogoutLayout><Register /></LogoutLayout>} />
         </Routes>
-      
+
       </BrowserRouter>
     </div>
   );

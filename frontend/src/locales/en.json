@@ -1,11 +1,76 @@
 {
     "welcome": "Welcome",
     "login": "Login",
-    "password": "Password",
-    "email":"E-mail",
-    "button": {
-        "login": "Login",
-        "save": "Save",
-        "remove": "Remove"
+    "password": "Write here your password",
+    "email": "Write here your email",
+    "name": "Write here your name",
+    "register": "Sign Up",
+    "home": "Home",
+    "recover": "Forgot your password?",
+    "recoverTitle": "Recover Password",
+    "cancel": "Cancel",
+    "recoverButton": "Recover",
+    "signUpTitle": "Sign Up",
+    "signUpButton": "Register",
+    "profile": {
+        "title": "Edit Profile",
+        "name": "Name",
+        "nameInput": "Full Name",
+        "cpf": "CPF",
+        "rg": "RG",
+        "cep": "CEP",
+        "road": "Road",
+        "city": "City",
+        "state": "State",
+        "save": "Save"
+    },
+    "change": {
+        "title": "Change Password",
+        "code": "Code sent to your E-mail",
+        "newPassword": "Write your new password",
+        "confirm": "Confirm your password",
+        "change": "Change"
+    },
+    "validation": {
+        "lenght": "The password must have at least 6 letters.",
+        "upperCase": "The password must have at least 1 UpperCase letter.",
+        "lowerCase": "The password must have at least 1 LowerCase letter.",
+        "number": "The password must have at least 1 number.",
+        "special": "The password must have at least 1 special character.",
+        "confirmation": "The passwords don't match."
+    },
+    "footer": {
+        "contact": "Contact",
+        "address": "Company Address",
+        "phone": "Contact Number",
+        "email": "Support E-mail",
+        "links": "Useful Links",
+        "about": "About Us",
+        "service": "Services",
+        "policy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "media": "Social Media",
+        "news": "Subscribe to our Newsletter",
+        "subscribe": "Subscribe",
+        "copy": "2024 Fabio Filho. All rights reserved."
+    },
+    "dashboard": {
+        "itemName1": "Lot 1 - Nelore Bull",
+        "itemName2": "Lot 2 - Dairy Cow",
+        "itemName3": "Lot 3 - Brahman Bull",
+        "march": "Mar",
+        "april": "Apr",
+        "may": "May",
+        "june": "Jun",
+        "july": "Jul",
+        "august": "Aug",
+        "auctions": "Active Auctions",
+        "moment":"auctions active at the moment",
+        "total": "Total Sales",
+        "monthly": "Monthly Sales Total (Brazilian Reais)",
+        "auctioned": "Last Auctioned Items (Brazilian Reais)",
+        "subscribed": "Last Registered Users",
+        "sales": "Total Sales (Brazilian Reais)",
+        "realized": "in sales."
     }
 }

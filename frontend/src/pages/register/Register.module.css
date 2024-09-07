@@ -1,0 +1,35 @@
+.registerGrid {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.registerBackground{
+    background-color: #d3ebc4;
+}
+
+.registerButtons{
+    background-color: #397f0a;
+}
+
+.registerOptions {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 0.5rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+
+.erros {
+    margin-bottom: 0.5rem;
+}
+
+
+.passwordField {
+    border: none; /* Remove a borda */
+    border-radius: 0.25rem; /* Ajuste conforme necessário */
+    padding: 0.5rem; /* Ajuste o padding conforme necessário */
+    box-shadow: none; /* Remove qualquer sombra */
+}

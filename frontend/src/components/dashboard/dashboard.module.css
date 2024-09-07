@@ -1,0 +1,53 @@
+.dashboardContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; 
+  gap: 20px; 
+  padding: 20px;
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+
+.centerSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+
+.cardContent {
+  padding: 10px;
+}
+
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cardList li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cardList li:last-child {
+  border-bottom: none;
+}
+
+.languageOptions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dashboardBackground{
+  background-color: #e6e9e4;
+}

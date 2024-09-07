@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import styles from './Login.module.css'; // Importa o CSS module
 
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
@@ -8,10 +8,6 @@ import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-
-
-
-
 
 const Login = () => {
     const [user, setUser] = useState({ email: "", password: "" });
@@ -24,37 +20,52 @@ const Login = () => {
 
     const login = () => {
         let token = "token do backend"
-        if (user.email == "fabio.filho2002@hotmail.com" && user.password == "123") {
+        if (user.email === "fabio.filho2002@hotmail.com" && user.password === "123") {
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
-            navigate("/");
+            navigate("/profile");
         } else {
-            alert("User ou Senha Incorretos");
+            alert("Usuário ou Senha Incorretos");
         }
     }
+
     return (
-
-        <div className="login-grid">
-            <Card title="Login" className="login-background-color">
-
-                <div class="field">
-                    <InputText onChange={handleChange} name="email" id="email" className="input-field" placeholder="Digite aqui seu email" />
-
+        <div className={styles.loginGrid} >
+            <Card title="Login" className={styles.loginBackgroundColor}>
+                <div className="field">
+                    <InputText 
+                        onChange={handleChange} 
+                        name="email" 
+                        id="email" 
+                        className="input-field" 
+                        placeholder={t('email')}
+                    />
                 </div>
-                <div class="field">
-                    <Password onChange={handleChange} name="password" id="password" className="input-field" placeholder="Digite aqui sua senha" feedback={false} />
-
+                <div className="field">
+                    <Password 
+                        onChange={handleChange} 
+                      
+                        name="password" 
+                        id="password" 
+                        className="input-field" 
+                        placeholder={t('password')}
+                        feedback={false} 
+                    />
                 </div>
-
-                <div className="button-container">
-                    <Button onClick={login} label={t('button.login')} className="login-button" />
+                <div className={styles.buttonContainer}>
+                    <Button 
+                        onClick={login} 
+                        label={t('login')} 
+                        className={styles.loginButton} 
+                    />
                 </div>
-                <div className="login-options">
-                    <Link to="/register" className="sign-up">Cadastre-se</Link>
-                    <Link to="/recover" className="forgot-password">Esqueceu a senha?</Link>
+                <div className={styles.loginOptions}>
+                    <Link to="/register" className="sign-up">{t('register')}</Link>
+                    <Link to="/recover" className="forgot-password">{t('recover')}</Link>
                 </div>
             </Card>
         </div>
     );
 }
+
 export default Login;

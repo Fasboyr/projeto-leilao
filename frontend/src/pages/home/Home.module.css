@@ -3,8 +3,12 @@
 }
 
 
-.background-color{
-    background-color: blue;
+.homeBackground{
+    background-color: #d3ebc4;
+}
+
+.homeButtons{
+    background-color: #397f0a;
 }
 
 .dashboard-grid{

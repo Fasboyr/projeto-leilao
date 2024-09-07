@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
-import "./ChangePassword.css";
+import styles from './ChangePassword.module.css'; // Importa o CSS module
 
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
+import { useTranslation } from 'react-i18next';
 
 const ChangePassword = () => {
     const [password, setPassword] = useState('');
@@ -13,25 +14,26 @@ const ChangePassword = () => {
     const [errors, setErrors] = useState([]);
     const [confirmationError, setConfirmationError] = useState('');
     const typingTimeoutRef = useRef(null);
+    const { t } = useTranslation();
 
     const validatePassword = (value) => {
         const errors = [];
 
         if (value.length > 0) {
             if (value.length < 6) {
-                errors.push("A senha deve ter no mínimo 6 caracteres.");
+                errors.push(t('validation.lenght'));
             }
             else if (!/[A-Z]/.test(value)) {
-                errors.push("A senha deve conter pelo menos uma letra maiúscula.");
+                errors.push(t('validation.upperCase'));
             }
             else if (!/[a-z]/.test(value)) {
-                errors.push("A senha deve conter pelo menos uma letra minúscula.");
+                errors.push(t('validation.lowerCase'));
             }
             else if (!/[0-9]/.test(value)) {
-                errors.push("A senha deve conter pelo menos um número.");
+                errors.push(t('validation.number'));
             }
             else if (!/[^A-Za-z0-9]/.test(value)) {
-                errors.push("A senha deve conter pelo menos um caractere especial.");
+                errors.push(t('validation.special'));
             }
 
             setErrors(errors);
@@ -59,7 +61,7 @@ const ChangePassword = () => {
 
     const validateConfirmation = (passwordValue, confirmPasswordValue) => {
         if (passwordValue && confirmPasswordValue && passwordValue !== confirmPasswordValue) {
-            setConfirmationError("As senhas não coincidem.");
+            setConfirmationError(t('validation.confirmation'));
         } else {
             setConfirmationError('');
         }
@@ -72,71 +74,69 @@ const ChangePassword = () => {
     };
 
     return (
-
-        <div className="change-grid">
-            <Card title="Mudar Senha">
-
-
-                <div class="field">
-                    <InputText id="email"
+        <div className={styles.changeGrid}>
+            <Card title={t('change.title')} className={styles.changeBackground}>
+                <div className={styles.field}>
+                    <InputText
+                        id="email"
                         type="text"
-                        className="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                        placeholder="Insira seu E-mail"
+                        className="text-base p-2 border-1 border-solid border-round appearance-none outline-none w-full"
+                        placeholder={t('email')}
                     />
                 </div>
 
-                <div class="field">
-                    <InputText id="email"
+                <div className={styles.field}>
+                    <InputText
+                        id="code"
                         type="text"
-                        className="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                        placeholder="Codigo enviado ao E-mail"
+                        className="text-base p-2 border-1 border-solid border-round appearance-none outline-none w-full"
+                        placeholder={t('change.code')}
                     />
                 </div>
 
-                <div className="field">
+                <div className={styles.field}>
                     <Password
                         value={password}
                         onChange={onPasswordChange}
                         id="password"
-                        className="text-base text-color surface-overlay p-2appearance-none outline-none focus:border-primary w-full"
+                        className="text-base p-2 border-round appearance-none outline-none w-full"
                         inputClassName="w-full p-2"
-                        placeholder="Insira a nova senha"
+                        placeholder={t('change.newPassword')}
                         feedback={false}
                         toggleMask
                     />
                 </div>
 
-                <div className="erros">
+                <div className={styles.errors}>
                     {errors.length > 0 && errors.map((error, index) => (
                         <Message key={index} severity="error" text={error} />
                     ))}
                 </div>
 
-                <div className="field">
+                <div className={styles.field}>
                     <Password
                         value={confirmPassword}
                         onChange={onConfirmPasswordChange}
-                        id="password"
-                        className="text-base text-color surface-overlay p-2appearance-none outline-none focus:border-primary w-full"
+                        id="confirmPassword"
+                        className="text-base p-2 border-round appearance-none outline-none w-full"
                         inputClassName="w-full p-2"
-                        placeholder="Confirme a senha"
+                        placeholder={t('change.confirm')}
                         feedback={false}
                         toggleMask
                     />
                 </div>
 
-                <div className="erros">
+                <div className={styles.errors}>
                     {confirmationError && <Message severity="error" text={confirmationError} />}
                 </div>
-                <div className="change-options">
-                    <Button label="Cancelar" size="small" />
-                    <Button label="Alterar" size="small" />
+
+                <div className={styles.changeOptions}>
+                    <Button label={t('cancel')} size="small" className={styles.changeButtons} />
+                    <Button label={t('change.change')} size="small" className={styles.changeButtons}/>
                 </div>
-
-
-
             </Card>
         </div>
     );
 }
+
 export default ChangePassword;

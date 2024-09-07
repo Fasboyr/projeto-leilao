@@ -1,21 +1,20 @@
 
-.login-grid{
+
+.loginGrid {
     display: grid;
     place-items: center;
     height: 100vh;
-
 }
-.login-background-color {
+
+.loginBackgroundColor {
     background-color: #d3ebc4;
 }
 
-
-.p-card-title {
+.pCardTitle {
     text-align: center;
 }
 
-
-.login-options {
+.loginOptions {
     display: flex;
     padding-left: 10px;
     margin-top: 0.5rem;
@@ -24,17 +23,13 @@
     gap: 1rem;
 }
 
-.p-icon-field {
-    width: 100%;
-}
-
-.button-container {
+.buttonContainer {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
 }
 
-.login-button {
+.loginButton {
     width: 100%;
     max-width: 200px;
     height: 3rem;

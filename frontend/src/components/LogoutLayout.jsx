@@ -3,15 +3,15 @@ import Footer from "./footer/Footer";
 import HeaderLogout from "./header/headerLogout/HeaderLogout";
 
 
-const SimpleLayout = ({children}) => {
+const LogoutLayout = ({children}) => {
 
     return (
-            <>
+            <div className="background">
             <HeaderLogout />
                 {children}
             <Footer/>
-            </>
+            </div>
             );
 }
 
-export default SimpleLayout;
+export default LogoutLayout;

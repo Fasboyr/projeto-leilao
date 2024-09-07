@@ -1,11 +1,80 @@
 {
-"welcome":"Bem-vindo",
-"login":"Acessar",
-"password":"Senha",
-"email":"E-mail",
-"button":{
-    "login":"Acessar",
-    "save":"Salvar",
-    "remove":"Excluir"
-}
+    "welcome": "Bem-vindo",
+    "login": "Login",
+    "password": "Digite aqui sua senha",
+    "email": "Digite aqui seu email",
+    "name":"Digite aqui seu nome",
+    "register": "Cadastre-se",
+    "home":"Pagina inicial",
+    "recover": "Esqueceu a senha?",
+    "recoverTitle":"Recuperar Senha",
+    "cancel":"Cancelar",
+    "recoverButton":"Recuperar",
+    "signUpTitle":"Cadastro",
+    "signUpButton":"Cadastrar",
+    "profile":{
+        "title":"Editar Perfil",
+        "name":"Nome",
+        "nameInput":"Nome Completo",
+        "cpf":"CPF",
+        "rg":"RG",
+        "cep":"CEP",
+        "road":"Rua",
+        "city":"Cidade",
+        "state":"Estado",
+        "save":"Salvar"
+    },
+
+    "change":{
+        "title":"Mudar Senha",
+        "code":"Código enviado ao seu E-mail",
+        "newPassword":"Insira a nova senha",
+        "confirm":"Confirme a senha",
+        "change":"Alterar"
+    },
+
+    "validation":{
+        "lenght":"A senha deve ter no mínimo 6 caracteres.",
+        "upperCase":"A senha deve conter pelo menos uma letra maiúscula.",
+        "lowerCase":"A senha deve conter pelo menos uma letra minúscula.",
+        "number":"A senha deve conter pelo menos um número.",
+        "special":"A senha deve conter pelo menos um caractere especial.",
+        "confirmation":"As senhas não coincidem."
+    },
+
+    "footer":{
+        "contact":"Contato",
+        "address":"Endereço da Empresa",
+        "phone":"Telefone de Contato",
+        "email":"Email de Suporte",
+        "links":"Links Úteis",
+        "about":"Sobre Nós",
+        "service":"Serviços",
+        "policy":"Política de Privacidade",
+        "terms":"Termos de Serviço",
+        "media":"Redes Sociais",
+        "news":"Assine nossa Newsletter",
+        "subscribe":"Inscrever",
+        "copy":"2024 Fabio Filho. Todos os direitos reservados"
+    },
+
+    "dashboard":{
+        "itemName1":"Lote 1 - Boi Nelore",
+        "itemName2":"Lote 2 - Vaca Leiteira",
+        "itemName3":"Lote 3 - Touro Brahman",
+        "march":"Mar",
+        "april":"Abr",
+        "may":"Maio",
+        "june":"Jun",
+        "july":"Jul",
+        "august":"Ago",
+        "auctions":"Leilões Ativos",
+        "moment":"leilões ativos atualmente.",
+        "total":"Total de Vendas",
+        "monthly":"Total de Vendas Mensais",
+        "auctioned":"Últimos Itens Arrematados",
+        "subscribed":"Últimos Usuários Cadastrados",
+        "sales":"Total de Vendas Realizadas",
+        "realized":"em vendas realizadas."
+    }
 }

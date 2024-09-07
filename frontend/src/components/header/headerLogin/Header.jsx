@@ -1,22 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
+import styles from "./Header.module.css";
 import Logout from "../../logout/logout";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+
+  const {t, i18n } = useTranslation();
+
+  const changeLanguage = (language) => {
+      i18n.changeLanguage(language);
+  };
+
   return (
-    <div className="header">
+    <div className={styles.header}>
       <h2>Menu</h2>
-      <nav className="nav-left">
+      <nav className={styles.navLeft}>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/change">Mudar Senha</Link></li>
+          <li><Link className={styles.headerNavLink} to="/">{t('home')}</Link></li>
+          <li><Link className={styles.headerNavLink} to="/change">{t('change.title')}</Link></li>
         </ul>
       </nav>
-      <nav className="nav-right">
+      <nav className={styles.navRight}>
         <ul>
-          <li><Link to="/recover"><i className="fas fa-user"></i></Link></li>
-          <li><Logout/></li>
+          <button onClick={() => changeLanguage('pt')} className={styles.languageButton}>Português</button>
+          <button onClick={() => changeLanguage('en')} className={styles.languageButton}>English</button>
+          <li><Link className={styles.headerNavLink} to="/profile"><i className="fas fa-user"></i></Link></li>
+          <li><Logout /></li>
         </ul>
       </nav>
     </div>

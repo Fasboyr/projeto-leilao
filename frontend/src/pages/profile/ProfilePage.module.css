@@ -1,0 +1,62 @@
+.profileGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem; 
+}
+
+.card {
+    width: 100%;  
+    max-width: 900px;  
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #d3ebc4;
+}
+
+.fieldGroup {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.field label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.profilePicture {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.profileOptions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+.profileButtons{
+    background-color: #397f0a;
+}
+
+@media (max-width: 768px) {
+    .fieldGroup {
+        grid-template-columns: 1fr;  
+    }
+
+    .card {
+        padding: 1rem;  
+    }
+}
+
+

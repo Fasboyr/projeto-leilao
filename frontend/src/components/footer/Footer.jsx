@@ -1,40 +1,41 @@
-import React from "react";
-import "./Footer.css";
-
+import React from 'react';
+import styles from './Footer.module.css'; // Importa o CSS module
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
-    <footer className="footer">
-      <div className="footer-info">
-        <div className="footer-contact">
-          <h3>Contato</h3>
-          <p>Endereço da Empresa</p>
-          <p>Telefone de Contato</p>
-          <p>Email de Suporte</p>
+    <footer className={styles.footer}>
+      <div className={styles.footerInfo}>
+        <div className={styles.footerContact}>
+          <h3>{t('footer.contact')}</h3>
+          <p>{t('footer.address')}</p>
+          <p>{t('footer.phone')}</p>
+          <p>{t('footer.email')}</p>
         </div>
-        <div className="footer-links">
-          <h3>Links Úteis</h3>
+        <div className={styles.footerLinks}>
+          <h3>{t('footer.links')}</h3>
           <ul>
-            <li><a href="#">Sobre Nós</a></li>
-            <li><a href="#">Serviços</a></li>
-            <li><a href="#">Política de Privacidade</a></li>
-            <li><a href="#">Termos de Serviço</a></li>
+            <li><a href="#">{t('footer.about')}</a></li>
+            <li><a href="#">{t('footer.service')}</a></li>
+            <li><a href="#">{t('footer.policy')}</a></li>
+            <li><a href="#">{t('footer.terms')}</a></li>
           </ul>
         </div>
-        <div className="footer-social">
-          <h3>Redes Sociais</h3>
+        <div className={styles.footerSocial}>
+          <h3>{t('footer.media')}s</h3>
           <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
           <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
         </div>
-        <div className="footer-newsletter">
-          <h3>Assine nossa Newsletter</h3>
-          <input type="email" placeholder="Digite seu email aqui" />
-          <button>Inscrever</button>
+        <div className={styles.footerNewsletter}>
+          <h3>{t('footer.news')}</h3>
+          <input type="email" placeholder={t('email')} />
+          <button>{t('footer.subscribe')}</button>
         </div>
       </div>
-      <div className="footer-copyright">
-        <p>&copy; 2024 Fabio Filho. Todos os direitos reservados.</p>
+      <div className={styles.footerCopyright}>
+        <p>&copy; {t('footer.copy')}</p>
       </div>
     </footer>
   );

@@ -25,10 +25,10 @@ tipo de leilão desenvolver deixado à escolha do aluno
   - [x] confirmar senha
   - [x] opções de cancelar e alterar a senha.
 - Tela Principal/Home:
-  - [ ] Adicionar um menu na tela home
-  - [ ] Adicionar conteúdo no rodapé;
-  - [ ] Adicionar opção de logout.
-  - [ ] Montar um dashboard simples, exibindo, com elementos textuais, quantidade de leilões ativos, últimos itens arrematados, últimos usuários cadastrados, total de vendas realizadas, entre outros dados.
+  - [x] Adicionar um menu na tela home
+  - [x] Adicionar conteúdo no rodapé;
+  - [x] Adicionar opção de logout.
+  - [x] Montar um dashboard simples, exibindo, com elementos textuais, quantidade de leilões ativos, últimos itens arrematados, últimos usuários cadastrados, total de vendas realizadas, entre outros dados.
 - Tela de Perfil: 
   - [ ] Edição do perfil, com campos dos dados pessoais, documentos, endereço completo e foto de perfil - somente pessoa física;
   - [ ] Validar o CPF;
@@ -50,7 +50,7 @@ tipo de leilão desenvolver deixado à escolha do aluno
     - [ ] Aplicar o recurso de internacionalização em todo o sistema;
     - [ ] Utilizar CSS em módulo.
   - Tela Home:
-    - [ ] Complementar a dashboard e utilizar gráficos para exibir alguns dados que você define como relevante.
+    - [x] Complementar a dashboard e utilizar gráficos para exibir alguns dados que você define como relevante.
 
 
 

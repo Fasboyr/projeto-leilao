@@ -30,9 +30,9 @@ tipo de leilão desenvolver deixado à escolha do aluno
   - [x] Adicionar opção de logout.
   - [x] Montar um dashboard simples, exibindo, com elementos textuais, quantidade de leilões ativos, últimos itens arrematados, últimos usuários cadastrados, total de vendas realizadas, entre outros dados.
 - Tela de Perfil: 
-  - [ ] Edição do perfil, com campos dos dados pessoais, documentos, endereço completo e foto de perfil - somente pessoa física;
-  - [ ] Validar o CPF;
-  - [ ] A tela deverá ser chamada a partir da área logada;
+  - [x] Edição do perfil, com campos dos dados pessoais, documentos, endereço completo e foto de perfil - somente pessoa física;
+  - [x] Validar o CPF;
+  - [x] A tela deverá ser chamada a partir da área logada;
 ### Desafio sem prova 
 - 1º Desafio:
   - [x] A senha deve ter no mínimo 6 caracteres e conter pelo menos:
@@ -42,13 +42,13 @@ tipo de leilão desenvolver deixado à escolha do aluno
   - [x] 1 caractere especial.
   - [x] Na tela de Alterar Senha, implementar validação em tempo real, exibindo mensagens de erro enquanto o usuário digita as senhas
 - 2º Desafio:
-  - [ ] Utilizar localização do navegador para pesquisar o endereço e completar automaticamente;
-  - [ ] Utilizar uma API de endereço;
-  - [ ] Completar o endereço ao informar o CEP.
+  - [x] Utilizar localização do navegador para pesquisar o endereço e completar automaticamente;
+  - [x] Utilizar uma API de endereço;
+  - [x] Completar o endereço ao informar o CEP.
 - 3º Desafio:
   - Internacionalização:
-    - [ ] Aplicar o recurso de internacionalização em todo o sistema;
-    - [ ] Utilizar CSS em módulo.
+    - [x] Aplicar o recurso de internacionalização em todo o sistema;
+    - [x] Utilizar CSS em módulo.
   - Tela Home:
     - [x] Complementar a dashboard e utilizar gráficos para exibir alguns dados que você define como relevante.
 

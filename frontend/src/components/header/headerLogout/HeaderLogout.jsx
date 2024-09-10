@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import style from "./HeaderLogout.module.css"; // Ajuste conforme necessário
 
 const Header = () => {
     const { t, i18n } = useTranslation();
+    const [languageMenuVisible, setLanguageMenuVisible] = useState(false);
+    const currentLanguage = i18n.language;
 
     const changeLanguage = (language) => {
         i18n.changeLanguage(language);
+        setLanguageMenuVisible(false); // Fecha o menu após a troca de idioma
     };
 
-    
+    const toggleLanguageMenu = () => {
+        setLanguageMenuVisible(prevState => !prevState); // Alterna o estado do menu
+    };
 
     return (
         <header className={style.header}>
@@ -22,8 +27,17 @@ const Header = () => {
                 </ul>
             </nav>
             <nav className={style.navRight}>
-                <button onClick={() => changeLanguage('pt')} className={style.languageButton}>Português</button>
-                <button onClick={() => changeLanguage('en')} className={style.languageButton}>English</button>
+                <div className={style.languageWrapper}>
+                    <button className={style.languageButton} onClick={toggleLanguageMenu}>
+                        {currentLanguage.toUpperCase()}
+                    </button>
+                    {languageMenuVisible && (
+                        <ul className={style.languageMenu}>
+                            <li onClick={() => changeLanguage('pt')}>PT</li>
+                            <li onClick={() => changeLanguage('en')}>EN</li>
+                        </ul>
+                    )}
+                </div>
             </nav>
         </header>
     );

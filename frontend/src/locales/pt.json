@@ -34,12 +34,13 @@
     },
 
     "validation":{
+        "rule":"Regras",
         "lenght":"A senha deve ter no mínimo 6 caracteres.",
         "upperCase":"A senha deve conter pelo menos uma letra maiúscula.",
         "lowerCase":"A senha deve conter pelo menos uma letra minúscula.",
         "number":"A senha deve conter pelo menos um número.",
         "special":"A senha deve conter pelo menos um caractere especial.",
-        "confirmation":"As senhas não coincidem."
+        "confirmation":"As senhas devem coincidir"
     },
 
     "footer":{

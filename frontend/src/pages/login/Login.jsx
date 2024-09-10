@@ -23,7 +23,7 @@ const Login = () => {
         if (user.email === "fabio.filho2002@hotmail.com" && user.password === "123") {
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
-            navigate("/profile");
+            navigate("/");
         } else {
             alert("Usuário ou Senha Incorretos");
         }
@@ -37,19 +37,21 @@ const Login = () => {
                         onChange={handleChange} 
                         name="email" 
                         id="email" 
-                        className="input-field" 
+                        inputClassName="w-full"
+                        className="w-full"
                         placeholder={t('email')}
                     />
                 </div>
                 <div className="field">
                     <Password 
                         onChange={handleChange} 
-                      
                         name="password" 
                         id="password" 
-                        className="input-field" 
                         placeholder={t('password')}
                         feedback={false} 
+                        toggleMask
+                        pt={{ iconField: { root: { className: 'w-full' } } }}
+                        
                     />
                 </div>
                 <div className={styles.buttonContainer}>

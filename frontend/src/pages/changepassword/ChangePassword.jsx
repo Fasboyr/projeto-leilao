@@ -7,6 +7,8 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { useTranslation } from 'react-i18next';
+import PasswordValidation from '../../components/password/passwordValidation';
+import PasswordConfirmation from '../../components/password/passwordConfirmation';
 
 const ChangePassword = () => {
     const [password, setPassword] = useState('');
@@ -95,16 +97,7 @@ const ChangePassword = () => {
                 </div>
 
                 <div className={styles.field}>
-                    <Password
-                        value={password}
-                        onChange={onPasswordChange}
-                        id="password"
-                        className="text-base p-2 border-round appearance-none outline-none w-full"
-                        inputClassName="w-full p-2"
-                        placeholder={t('change.newPassword')}
-                        feedback={false}
-                        toggleMask
-                    />
+                    <PasswordValidation/>
                 </div>
 
                 <div className={styles.errors}>
@@ -114,16 +107,7 @@ const ChangePassword = () => {
                 </div>
 
                 <div className={styles.field}>
-                    <Password
-                        value={confirmPassword}
-                        onChange={onConfirmPasswordChange}
-                        id="confirmPassword"
-                        className="text-base p-2 border-round appearance-none outline-none w-full"
-                        inputClassName="w-full p-2"
-                        placeholder={t('change.confirm')}
-                        feedback={false}
-                        toggleMask
-                    />
+                    <PasswordConfirmation/>
                 </div>
 
                 <div className={styles.errors}>

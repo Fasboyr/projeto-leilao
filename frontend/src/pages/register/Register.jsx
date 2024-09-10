@@ -6,6 +6,7 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { useTranslation } from 'react-i18next';
+import PasswordValidation from '../../components/password/passwordValidation';
 
 const Register = () => {
     const [password, setPassword] = useState('');
@@ -78,16 +79,8 @@ const Register = () => {
                 </div>
 
                 <div className="field">
-                    <Password
-                        value={password}
-                        onChange={onPasswordChange}
-                        id="password"
-                        className={`text-base text-color surface-overlay p-2 ${styles.passwordField}`}
-                        inputClassName="w-full p-2"
-                        placeholder={t('password')}
-                        feedback={false}
-                        toggleMask
-                    />
+                   
+                    <PasswordValidation />
                 </div>
 
                 <div className={styles.erros}>

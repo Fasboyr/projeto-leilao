@@ -6,6 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { useTranslation } from 'react-i18next';
+import { Divider } from 'primereact/divider';
 
 // Função para aplicar máscara de CPF
 const applyCpfMask = (value) => {
@@ -15,6 +16,8 @@ const applyCpfMask = (value) => {
         .replace(/(\d{3})(\d)/, '$1.$2') 
         .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
 };
+
+
 
 // Função para aplicar máscara de RG
 const applyRgMask = (value) => {
@@ -69,6 +72,16 @@ const ProfilePage = () => {
     const [estado, setEstado] = useState('');
     const { t } = useTranslation();
 
+    const cpfFooter = (
+        <>
+            <Divider />
+            <p className="mt-2">{t('validation.rule')}</p>
+            <ul className="pl-2 ml-2 mt-0 line-height-3">
+                <li>{t('validation.confirmation')}</li>
+            </ul>
+        </>
+    );
+
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(fetchAddress);
@@ -87,7 +100,7 @@ const ProfilePage = () => {
                     setCep(address.postalCode);
                 })
                 .catch(error => {
-                    console.error('Erro ao buscar o endereço pelo CEP:', error);
+                    console.error('Erro ao buscar o endereço', error);
                 });
         }
     }, [cep]);
@@ -190,15 +203,15 @@ const ProfilePage = () => {
                         <InputText id="nome" value={nome} onChange={(e) => setNome(e.target.value)} placeholder={t('profile.nameInput')} />
                     </div>
                     <div className={styles.field}>
-                        <label htmlFor="cpf">{t('profile.cpf')}</label>
+                        <label htmlFor="cpf">CPF</label>
                         <InputText
                             id="cpf"
                             value={cpf}
                             onChange={onCpfChange}
-                            placeholder={t('profile.cpf')}
-                            maxLength={14} // Limita a entrada com máscara a 14 caracteres (formato: 000.000.000-00)
+                            placeholder="CPF"
+                            maxLength={14}
                         />
-                        {cpfError && <Message severity="error" text={cpfError} />}
+                        {cpfError && <div className={styles.errorMessage}>{cpfError}</div>}
                     </div>
                     <div className={styles.field}>
                         <label htmlFor="rg">{t('profile.rg')}</label>
@@ -207,6 +220,7 @@ const ProfilePage = () => {
                             value={rg}
                             onChange={onRgChange}
                             placeholder={t('profile.rg')}
+                
                             maxLength={12} // Limita a entrada com máscara a 12 caracteres (formato: 00.000.000-0)
                         />
                     </div>

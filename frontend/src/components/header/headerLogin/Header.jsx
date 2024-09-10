@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import Logout from "../../logout/logout";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
-
-  const {t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [languageMenuVisible, setLanguageMenuVisible] = useState(false);
+  const currentLanguage = i18n.language;
 
   const changeLanguage = (language) => {
-      i18n.changeLanguage(language);
+    i18n.changeLanguage(language);
+    setLanguageMenuVisible(false); // Fecha o menu após a troca de idioma
+  };
+
+  const toggleLanguageMenu = () => {
+    setLanguageMenuVisible(!languageMenuVisible);
   };
 
   return (
@@ -23,8 +29,17 @@ const Header = () => {
       </nav>
       <nav className={styles.navRight}>
         <ul>
-          <button onClick={() => changeLanguage('pt')} className={styles.languageButton}>Português</button>
-          <button onClick={() => changeLanguage('en')} className={styles.languageButton}>English</button>
+          <li>
+            <button className={styles.languageButton} onClick={toggleLanguageMenu}>
+              {currentLanguage.toUpperCase()}
+            </button>
+            {languageMenuVisible && (
+              <ul className={styles.languageMenu}>
+                <li onClick={() => changeLanguage('pt')}>PT</li>
+                <li onClick={() => changeLanguage('en')}>EN</li>
+              </ul>
+            )}
+          </li>
           <li><Link className={styles.headerNavLink} to="/profile"><i className="fas fa-user"></i></Link></li>
           <li><Logout /></li>
         </ul>

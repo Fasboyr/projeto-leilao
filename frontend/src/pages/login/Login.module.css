@@ -36,3 +36,10 @@
     font-size: 1.1rem;
     background-color: #397f0a;
 }
+
+.passwordField {
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    box-shadow: none;
+}

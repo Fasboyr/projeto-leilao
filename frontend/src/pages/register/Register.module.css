@@ -27,9 +27,7 @@
 }
 
 
-.passwordField {
-    border: none; /* Remove a borda */
-    border-radius: 0.25rem; /* Ajuste conforme necessário */
-    padding: 0.5rem; /* Ajuste o padding conforme necessário */
-    box-shadow: none; /* Remove qualquer sombra */
+
+.p-icon-field {
+    width: 100%;
 }

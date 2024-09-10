@@ -1,5 +1,6 @@
+/* Header.module.css */
 .header {
-    border: 1px solid #aaa9a9; 
+    border: 1px solid #aaa9a9;
     border-radius: 5px;
     padding: 10px;
     background-color: #a19768;
@@ -9,10 +10,10 @@
     align-items: center;
     position: relative;
     font-size: x-large;
-    box-sizing: border-box; 
-    margin: 0 auto; 
-    max-width: 100%; 
-    z-index: 10; 
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 100%;
+    z-index: 10;
 }
 
 .header h2 {
@@ -21,7 +22,8 @@
     left: 20px;
 }
 
-.navLeft, .navRight {
+.navLeft,
+.navRight {
     display: flex;
 }
 
@@ -33,19 +35,21 @@
 
 .navLeft ul {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
 .navLeft ul li {
-    margin-left: 20px; 
+    margin-left: 20px;
 }
 
 .navRight {
     display: flex;
     align-items: center;
+    position: relative;
+    /* For positioning the dropdown */
 }
 
 .navRight ul {
@@ -56,7 +60,7 @@
 }
 
 .navRight ul li {
-    margin-left: 20px; 
+    margin-left: 20px;
 }
 
 .headerNavLink {
@@ -68,30 +72,58 @@
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+/* Styles for the language button and dropdown */
+.languageButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5da531;
+    color: white;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    /* For positioning the dropdown menu */
+}
 
-    .header h2 {
-        position: static;
-        margin-bottom: 10px;
-    }
+.languageMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* Position directly below the button */
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    z-index: 20;
+}
 
-    .navLeft, .navRight {
-        flex-direction: column;
-        margin: 10px 0;
-    }
+.languageMenu.active {
+    display: block;
+}
 
-    .navLeft ul, .navRight ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.languageMenu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #333;
+    font-size: 12px;
+    /* Reduced font size */
+    border-bottom: 1px solid #ddd;
+    /* Separator between items */
+}
 
-    .navLeft ul li, .navRight ul li {
-        margin: 10px 0;
-    }
+.languageMenu li:last-child {
+    border-bottom: none;
+    /* No border for the last item */
+}
+
+.languageMenu li:hover {
+    background-color: #f1f1f1;
 }

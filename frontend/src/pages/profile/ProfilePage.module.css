@@ -24,7 +24,44 @@
 .field {
     display: flex;
     flex-direction: column;
+    position: relative;
+    /* Faz com que a mensagem de erro se posicione em relação a este contêiner */
     margin-bottom: 1rem;
+}
+
+.errorMessage {
+    position: absolute;
+    /* Posiciona a mensagem de erro de forma que ela não afete o layout */
+    bottom: -1.5rem;
+    /* Ajuste conforme necessário */
+    left: 0;
+    color: #f44336;
+    /* Cor do texto de erro */
+    font-size: 0.875rem;
+    /* Tamanho do texto */
+    width: 100%;
+    /* Garante que a mensagem ocupe toda a largura do contêiner */
+    z-index: 1;
+    /* Garante que a mensagem esteja acima dos outros elementos */
+}
+
+.field .footer {
+    margin-top: 0.5rem;
+    color: #f44336;
+    /* Cor de erro */
+    font-size: x-small;
+    /* Ajuste conforme necessário */
+}
+
+.field .p-message {
+    position: absolute;
+    /* Adicione esta linha */
+    bottom: -1.5rem;
+    /* Ajuste conforme necessário */
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    /* Garante que a mensagem esteja acima de outros elementos */
 }
 
 .field label {

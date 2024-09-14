@@ -3,7 +3,6 @@ import styles from './Register.module.css'; // Importa o módulo CSS
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Message } from 'primereact/message';
 import { useTranslation } from 'react-i18next';
 import PasswordValidation from '../../components/password/passwordValidation';
 
@@ -37,12 +36,6 @@ const Register = () => {
                         password={password} 
                         setPassword={setPassword} 
                     />
-                </div>
-
-                <div className={styles.erros}>
-                    {errors.length > 0 && errors.map((error, index) => (
-                        <Message key={index} severity="error" text={error} />
-                    ))}
                 </div>
 
                 <div className={styles.registerOptions}>

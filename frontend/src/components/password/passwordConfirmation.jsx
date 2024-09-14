@@ -42,9 +42,7 @@ const PasswordConfirmation = ({ password, confirmPassword, onConfirmPasswordChan
                 footer={passwordFooter}
                 toggleMask
             />
-            <div style={{ color: getColor(validationStatus) }}>
-                {validationStatus ? '' : confirmationError}
-            </div>
+          
         </div>
     );
 };

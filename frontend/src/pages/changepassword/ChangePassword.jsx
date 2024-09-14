@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Message } from 'primereact/message';
 import { useTranslation } from 'react-i18next';
 import PasswordValidation from '../../components/password/passwordValidation';
 import PasswordConfirmation from '../../components/password/passwordConfirmation';
@@ -62,9 +61,7 @@ const ChangePassword = () => {
                     />
                 </div>
 
-                <div className={styles.errors}>
-                    {confirmationError && <Message severity="error" text={confirmationError} />}
-                </div>
+            
 
                 <div className={styles.changeOptions}>
                     <Button label={t('cancel')} size="small" className={styles.changeButtons} />

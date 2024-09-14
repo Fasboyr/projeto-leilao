@@ -1,0 +1,81 @@
+/* AdminDashboard.module.css */
+
+.background {
+    
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    height: 90%;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.stat {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.chart {
+    flex: 1; 
+    max-width: 100%; 
+    overflow: hidden; 
+}
+
+.chart canvas {
+    max-width: 100% !important; 
+    height: auto !important; 
+}
+
+.additionalInfo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.infoCard {
+    flex: 1;
+    margin: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.infoCard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.infoCard li {
+    margin-bottom: 10px;
+}

@@ -33,12 +33,16 @@
     },
     "validation": {
         "rule": "Rules",
-        "lenght": "The password must have at least 6 letters.",
+        "length": "The password must have at least 6 letters.",
         "upperCase": "The password must have at least 1 UpperCase letter.",
         "lowerCase": "The password must have at least 1 LowerCase letter.",
         "number": "The password must have at least 1 number.",
         "special": "The password must have at least 1 special character.",
-        "confirmation": "The passwords have to match."
+        "confirmation": "The passwords have to match.",
+        "prompt":"Enter a password",
+        "weak":"Weak",
+        "medium":"Medium",
+        "strong":"Strong"
     },
     "footer": {
         "contact": "Contact",

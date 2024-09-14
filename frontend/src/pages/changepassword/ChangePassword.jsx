@@ -1,65 +1,18 @@
-import React, { useState, useRef } from 'react';
-import styles from './ChangePassword.module.css'; // Importa o CSS module
-
+import React, { useState } from 'react';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { useTranslation } from 'react-i18next';
 import PasswordValidation from '../../components/password/passwordValidation';
 import PasswordConfirmation from '../../components/password/passwordConfirmation';
+import styles from './ChangePassword.module.css';
 
 const ChangePassword = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [errors, setErrors] = useState([]);
     const [confirmationError, setConfirmationError] = useState('');
-    const typingTimeoutRef = useRef(null);
     const { t } = useTranslation();
-
-    const validatePassword = (value) => {
-        const errors = [];
-
-        if (value.length > 0) {
-            if (value.length < 6) {
-                errors.push(t('validation.lenght'));
-            }
-            else if (!/[A-Z]/.test(value)) {
-                errors.push(t('validation.upperCase'));
-            }
-            else if (!/[a-z]/.test(value)) {
-                errors.push(t('validation.lowerCase'));
-            }
-            else if (!/[0-9]/.test(value)) {
-                errors.push(t('validation.number'));
-            }
-            else if (!/[^A-Za-z0-9]/.test(value)) {
-                errors.push(t('validation.special'));
-            }
-
-            setErrors(errors);
-        }
-    };
-
-    const onPasswordChange = (e) => {
-        const value = e.target.value;
-        setPassword(value);
-
-        if (typingTimeoutRef.current) {
-            clearTimeout(typingTimeoutRef.current);
-        }
-
-        if (value.length === 0) {
-            typingTimeoutRef.current = setTimeout(() => {
-                setErrors([]);
-            }, 1000);
-        } else {
-            typingTimeoutRef.current = setTimeout(() => {
-                validatePassword(value);
-            }, 1000);  // 1000 ms = 1 segundo
-        }
-    };
 
     const validateConfirmation = (passwordValue, confirmPasswordValue) => {
         if (passwordValue && confirmPasswordValue && passwordValue !== confirmPasswordValue) {
@@ -97,17 +50,16 @@ const ChangePassword = () => {
                 </div>
 
                 <div className={styles.field}>
-                    <PasswordValidation/>
-                </div>
-
-                <div className={styles.errors}>
-                    {errors.length > 0 && errors.map((error, index) => (
-                        <Message key={index} severity="error" text={error} />
-                    ))}
+                    <PasswordValidation password={password} setPassword={setPassword} />
                 </div>
 
                 <div className={styles.field}>
-                    <PasswordConfirmation/>
+                    <PasswordConfirmation
+                        password={password}
+                        confirmPassword={confirmPassword}
+                        onConfirmPasswordChange={onConfirmPasswordChange}
+                        confirmationError={confirmationError}
+                    />
                 </div>
 
                 <div className={styles.errors}>
@@ -116,11 +68,11 @@ const ChangePassword = () => {
 
                 <div className={styles.changeOptions}>
                     <Button label={t('cancel')} size="small" className={styles.changeButtons} />
-                    <Button label={t('change.change')} size="small" className={styles.changeButtons}/>
+                    <Button label={t('change.change')} size="small" className={styles.changeButtons} />
                 </div>
             </Card>
         </div>
     );
-}
+};
 
 export default ChangePassword;

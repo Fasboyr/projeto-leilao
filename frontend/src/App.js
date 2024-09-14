@@ -10,6 +10,8 @@ import DefaultLayout from './components/DefaultLayout';
 import PrivateRouter from './components/PrivateRouter';
 import LogoutLayout from './components/LogoutLayout';
 import ProfilePage from './pages/profile/ProfilePage';
+import UserBasedRoute from './components/UserBasedRouter';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 
 function App() {
@@ -18,10 +20,15 @@ function App() {
       <BrowserRouter>
 
         <Routes>
-          <Route element={<PrivateRouter />}>
-            <Route path='/' element={<SimpleLayout><Home /></SimpleLayout>} />
-            <Route path='/change' element={<SimpleLayout>< ChangePassword /></SimpleLayout>} />
-            <Route path='/profile' element={<SimpleLayout><ProfilePage/></SimpleLayout>}></Route>
+        <Route element={<PrivateRouter />}>
+            <Route element={<UserBasedRoute allowedRoles={['admin', 'user']} />}>
+              <Route path='/' element={<SimpleLayout><Home /></SimpleLayout>} />
+              <Route path='/change' element={<SimpleLayout><ChangePassword /></SimpleLayout>} />
+              <Route path='/profile' element={<SimpleLayout><ProfilePage /></SimpleLayout>} />
+            </Route>
+            <Route element={<UserBasedRoute allowedRoles={['admin']} />}>
+              <Route path='/admin' element={<SimpleLayout><AdminDashboard /></SimpleLayout>} />
+            </Route>
           </Route>
           <Route path='/recover' element={<LogoutLayout>< RecoverPassword /></LogoutLayout>} />
           <Route path='/login' element={<LogoutLayout><Login /></LogoutLayout>} />

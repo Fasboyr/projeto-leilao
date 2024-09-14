@@ -13,17 +13,6 @@ const Home = () =>{
 return(
     <div>
         <Dashboard/>
-        {/*
-        <h1 className={`w-full ${style.textColor}`}>{t('welcome')} Página Inicial</h1>
-        <br />
-        <button className={`${style['background-color']}`} onClick={()=>changeLanguage('en')}>
-            English
-        </button>
-        
-        <button onClick={() => changeLanguage('pt')}>
-            Português
-        </button>
-        <br /><br />*/}
     </div>
 );
 }

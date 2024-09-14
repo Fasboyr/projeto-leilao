@@ -51,3 +51,20 @@
 .dashboardBackground{
   background-color: #e6e9e4;
 }
+
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    grid-template-columns: 1fr; 
+  }
+  .cardContent canvas {
+    max-width: 100%; 
+    height: auto; 
+  }
+}
+
+.leftSection, .centerSection, .rightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

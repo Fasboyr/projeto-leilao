@@ -17,7 +17,6 @@
     padding: 20px;
     margin: 20px;
     height: 90%;
-    /* Adiciona margem inferior para evitar sobreposição com o footer */
 }
 
 .header {
@@ -46,14 +45,14 @@
 }
 
 .chart {
-    flex: 1; /* Permite que os gráficos ocupem espaço disponível */
-    max-width: 100%; /* Garante que o gráfico não exceda a largura do card */
-    overflow: hidden; /* Evita que o gráfico se sobreponha */
+    flex: 1; 
+    max-width: 100%; 
+    overflow: hidden; 
 }
 
 .chart canvas {
-    max-width: 100% !important; /* Garante que o canvas se ajuste à largura do container */
-    height: auto !important; /* Mantém a proporção do gráfico */
+    max-width: 100% !important; 
+    height: auto !important; 
 }
 
 .additionalInfo {

@@ -72,7 +72,6 @@
     text-decoration: underline;
 }
 
-/* Styles for the language button and dropdown */
 .languageButton {
     width: 40px;
     height: 40px;
@@ -86,14 +85,12 @@
     justify-content: center;
     cursor: pointer;
     position: relative;
-    /* For positioning the dropdown menu */
 }
 
 .languageMenu {
     display: none;
     position: absolute;
     top: 100%;
-    /* Position directly below the button */
     left: 0;
     background-color: white;
     border: 1px solid #ddd;
@@ -114,7 +111,6 @@
     cursor: pointer;
     color: #333;
     font-size: 12px;
-    /* Reduced font size */
     border-bottom: 1px solid #ddd;
     /* Separator between items */
 }

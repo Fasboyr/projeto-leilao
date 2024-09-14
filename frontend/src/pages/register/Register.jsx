@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Register.module.css'; // Importa o módulo CSS
+import styles from './Register.module.css';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';

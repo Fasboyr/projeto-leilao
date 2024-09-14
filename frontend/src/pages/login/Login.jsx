@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from './Login.module.css'; // Importa o CSS module
-
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
@@ -19,18 +18,28 @@ const Login = () => {
     }
 
     const login = () => {
-        let token = "token do backend"
-        if (user.email === "fabio.filho2002@hotmail.com" && user.password === "123") {
-            localStorage.setItem("token", token);
-            localStorage.setItem("email", user.email);
-            navigate("/");
+        let token = "token do backend";
+        let userType = "";
+    
+        // Verifica se o e-mail termina com '@admin', e se sim, define o tipo como 'admin'
+        if (user.email.endsWith("@admin.com") && user.password === "admin123") {
+            userType = "admin";
+        }else if (!user.email.endsWith("@admin.com") && user.password === "user123") {
+            userType = "user"; 
         } else {
-            alert("Usuário ou Senha Incorretos");
+                alert("Usuário ou Senha Incorretos");
+                return;
         }
+    
+        localStorage.setItem("token", token);
+        localStorage.setItem("email", user.email);
+        localStorage.setItem("userType", userType); 
+        navigate("/");
     }
 
+
     return (
-        <div className={styles.loginGrid} >
+        <div className={styles.loginGrid}>
             <Card title="Login" className={styles.loginBackgroundColor}>
                 <div className="field">
                     <InputText 
@@ -51,7 +60,6 @@ const Login = () => {
                         feedback={false} 
                         toggleMask
                         pt={{ iconField: { root: { className: 'w-full' } } }}
-                        
                     />
                 </div>
                 <div className={styles.buttonContainer}>

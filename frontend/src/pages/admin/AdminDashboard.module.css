@@ -1,0 +1,82 @@
+/* AdminDashboard.module.css */
+
+.background {
+    
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    height: 90%;
+    /* Adiciona margem inferior para evitar sobreposição com o footer */
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.stat {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.chart {
+    flex: 1; /* Permite que os gráficos ocupem espaço disponível */
+    max-width: 100%; /* Garante que o gráfico não exceda a largura do card */
+    overflow: hidden; /* Evita que o gráfico se sobreponha */
+}
+
+.chart canvas {
+    max-width: 100% !important; /* Garante que o canvas se ajuste à largura do container */
+    height: auto !important; /* Mantém a proporção do gráfico */
+}
+
+.additionalInfo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.infoCard {
+    flex: 1;
+    margin: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.infoCard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.infoCard li {
+    margin-bottom: 10px;
+}

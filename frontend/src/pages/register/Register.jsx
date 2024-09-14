@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import styles from './Register.module.css'; // Importa o módulo CSS
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { useTranslation } from 'react-i18next';
@@ -10,52 +9,7 @@ import PasswordValidation from '../../components/password/passwordValidation';
 
 const Register = () => {
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState([]);
-    const typingTimeoutRef = useRef(null);  // Referência ao timeout para controle de inatividade
     const { t } = useTranslation();
-
-    const validatePassword = (value) => {
-        const errors = [];
-
-       if (value.length > 0) {
-            if (value.length < 6) {
-                errors.push(t('validation.lenght'));
-            }
-            else if (!/[A-Z]/.test(value)) {
-                errors.push(t('validation.upperCase'));
-            }
-            else if (!/[a-z]/.test(value)) {
-                errors.push(t('validation.lowerCase'));
-            }
-            else if (!/[0-9]/.test(value)) {
-                errors.push(t('validation.number'));
-            }
-            else if (!/[^A-Za-z0-9]/.test(value)) {
-                errors.push(t('validation.special'));
-            }
-
-            setErrors(errors);
-        }
-    };
-
-    const onPasswordChange = (e) => {
-        const value = e.target.value;
-        setPassword(value);
-
-        if (typingTimeoutRef.current) {
-            clearTimeout(typingTimeoutRef.current);
-        }
-
-        if (value.length === 0) {
-            typingTimeoutRef.current = setTimeout(() => {
-                setErrors([]);
-            }, 1000);
-        } else {
-            typingTimeoutRef.current = setTimeout(() => {
-                validatePassword(value);
-            }, 1000);  // 1000 ms = 1 segundo
-        }
-    };
 
     return (
         <div className={styles.registerGrid}>
@@ -79,8 +33,10 @@ const Register = () => {
                 </div>
 
                 <div className="field">
-                   
-                    <PasswordValidation />
+                    <PasswordValidation 
+                        password={password} 
+                        setPassword={setPassword} 
+                    />
                 </div>
 
                 <div className={styles.erros}>
@@ -90,12 +46,12 @@ const Register = () => {
                 </div>
 
                 <div className={styles.registerOptions}>
-                    <Button label={t('cancel')}  size="small" className={styles.registerButtons} />
+                    <Button label={t('cancel')} size="small" className={styles.registerButtons} />
                     <Button label={t('signUpButton')} size="small" className={styles.registerButtons} />
                 </div>
             </Card>
         </div>
     );
-}
+};
 
 export default Register;

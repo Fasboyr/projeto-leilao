@@ -113,6 +113,19 @@
     display: block;
 }
 
+.themeToggleButton {
+    margin-left: 10px;
+    background-color: inherit;
+    border: none; 
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .themeToggleButton i {
+    font-size: x-large; 
+  }
+
 @media (max-width: 768px) {
     .header {
         flex-direction: column;

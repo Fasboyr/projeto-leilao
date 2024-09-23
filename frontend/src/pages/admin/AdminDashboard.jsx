@@ -57,11 +57,11 @@ const AdminDashboard = () => {
                 <div className={styles.charts}>
                     <div className={styles.chart}>
                         <h4>Sales Over Time</h4>
-                        <Line data={salesData} options={{ maintainAspectRatio: false }} />
+                        {/* <Line data={salesData} options={{ maintainAspectRatio: false }} />*/}
                     </div>
                     <div className={styles.chart}>
                         <h4>Active Auctions Comparison</h4>
-                        <Bar data={auctionsData} options={{ maintainAspectRatio: false }} />
+                        {/*<Bar data={auctionsData} options={{ maintainAspectRatio: false }} />*/}
                     </div>
                 </div>
             </div>

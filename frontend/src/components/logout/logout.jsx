@@ -15,7 +15,7 @@ const Logout = () =>{
         <a href="/login" onClick={(e) => {
           e.preventDefault(); 
           logout();
-        }} style={{ color: 'white', textDecoration: 'none' }}>
+        }} style={{color: 'var(--text-color)', textDecoration: 'none' }}>
           Logout
         </a>
       );

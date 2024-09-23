@@ -20,7 +20,7 @@ function App() {
       <BrowserRouter>
 
         <Routes>
-        <Route element={<PrivateRouter />}>
+          <Route element={<PrivateRouter />}>
             <Route element={<UserBasedRoute allowedRoles={['admin', 'user']} />}>
               <Route path='/' element={<SimpleLayout><Home /></SimpleLayout>} />
               <Route path='/change' element={<SimpleLayout><ChangePassword /></SimpleLayout>} />

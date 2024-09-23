@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import style from "./HeaderLogout.module.css"; // Ajuste conforme necessário
+import { GiBullHorns } from "react-icons/gi";
 
 const Header = () => {
     const { t, i18n } = useTranslation();
@@ -33,7 +34,7 @@ const Header = () => {
 
     return (
         <header className={style.header}>
-            <h2>Menu</h2>
+            <h2><GiBullHorns/></h2>
             <nav className={style.navLeft}>
                 <ul>
                     <li><a href="/login">{t('login')}</a></li>

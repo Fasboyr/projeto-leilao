@@ -7,8 +7,11 @@
 }
 
 .loginBackgroundColor {
-    background-color: #d3ebc4;
+    background-color: var( --card-background);
+    color: var(--text-color);
 }
+
+
 
 .pCardTitle {
     text-align: center;
@@ -23,6 +26,10 @@
     gap: 1rem;
 }
 
+.options{
+    color: var(--text-color);
+}
+
 .buttonContainer {
     display: flex;
     justify-content: center;
@@ -34,7 +41,7 @@
     max-width: 200px;
     height: 3rem;
     font-size: 1.1rem;
-    background-color: #397f0a;
+    background-color: var(--button-background);
 }
 
 .passwordField {

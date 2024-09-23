@@ -70,8 +70,8 @@ const Login = () => {
                     />
                 </div>
                 <div className={styles.loginOptions}>
-                    <Link to="/register" className="sign-up">{t('register')}</Link>
-                    <Link to="/recover" className="forgot-password">{t('recover')}</Link>
+                    <Link className={styles.options} to="/register">{t('register')}</Link>
+                    <Link className={styles.options} to="/recover">{t('recover')}</Link>
                 </div>
             </Card>
         </div>

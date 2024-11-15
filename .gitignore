@@ -1,0 +1,2 @@
+backend/src/main/resources/application-secrets.properties
+backend/target/classes/application-secrets.properties

@@ -8,10 +8,8 @@ public class PasswordVerification {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         // Suponha que esta seja a senha armazenada no banco (hash da nova senha)
-        String storedPasswordHash = "$2a$10$4CGVq3KsX9yoTls41lsgEuVGeeMq0Tj6.PLE7dSz1XKRbq.ns0I2K"; // Exemplo
-
-        // Senha que você quer verificar
-        String newPassword = "123";
+        String storedPasswordHash = "$2a$10$G9uqE8E8zH5V9ChE0Ns03u8AEeRAPOOOyzxdtbVQdMmJ105kU1yZS"; // Exemplo
+        String newPassword = "2234";
 
         // Verifica se a senha fornecida gera o mesmo hash
         boolean matches = passwordEncoder.matches(newPassword, storedPasswordHash);

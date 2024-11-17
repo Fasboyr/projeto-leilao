@@ -81,7 +81,7 @@ public class PersonService implements UserDetailsService {
 
         // Define validade do código (24 horas)
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR, 24);
+        calendar.add(Calendar.MINUTE, 2);
         person.setValidationCodeValidity(calendar.getTime());
 
         person.setValidated(false); // Usuário ainda não validado
@@ -104,6 +104,8 @@ public class PersonService implements UserDetailsService {
     }
 
     public String confirmRegistration(PersonAuthRequestDTO personAuthRequestDTO) {
+        deleteExpiredUnvalidatedRecords();
+
         // Localiza o usuário pelo e-mail e código de validação
         Person person = personRepository.findByEmailAndValidationCode(
                 personAuthRequestDTO.getEmail(),
@@ -122,6 +124,11 @@ public class PersonService implements UserDetailsService {
         personRepository.save(person);
 
         return "Cadastro confirmado com sucesso.";
+    }
+
+    private void deleteExpiredUnvalidatedRecords() {
+        Date now = new Date(); // Data e hora atual
+        personRepository.deleteAllByIsValidatedFalseAndValidationCodeValidityBefore(now);
     }
 
     public void validateUserForAuthentication(String email) {

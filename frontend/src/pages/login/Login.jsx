@@ -7,34 +7,29 @@ import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import PersonService from "../../services/PersonService";
 
 const Login = () => {
     const [user, setUser] = useState({ email: "", password: "" });
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const personService = new PersonService();
 
     const handleChange = (input) => {
         setUser({ ...user, [input.target.name]: input.target.value });
     }
 
-    const login = () => {
-        let token = "token do backend";
-        let userType = "";
-    
-        // Verifica se o e-mail termina com '@admin', e se sim, define o tipo como 'admin'
-        if (user.email.endsWith("@admin.com") && user.password === "admin123") {
-            userType = "admin";
-        }else if (!user.email.endsWith("@admin.com") && user.password === "user123") {
-            userType = "user"; 
-        } else {
-                alert("Usuário ou Senha Incorretos");
-                return;
+    const login = async () => {
+        try{
+            const response =  await personService.login(user);
+            let token = response.token;
+            localStorage.setItem("token", token);
+            localStorage.setItem("email", user.email);
+            navigate("/");
+        } catch(err){
+            console.log(err);
+            alert("usuário ou senha incorretos")
         }
-    
-        localStorage.setItem("token", token);
-        localStorage.setItem("email", user.email);
-        localStorage.setItem("userType", userType); 
-        navigate("/");
     }
 
 
@@ -70,8 +65,8 @@ const Login = () => {
                     />
                 </div>
                 <div className={styles.loginOptions}>
-                    <Link to="/register" className="sign-up">{t('register')}</Link>
-                    <Link to="/recover" className="forgot-password">{t('recover')}</Link>
+                    <Link className={styles.options} to="/register">{t('register')}</Link>
+                    <Link className={styles.options} to="/recover">{t('recover')}</Link>
                 </div>
             </Card>
         </div>

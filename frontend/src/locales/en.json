@@ -12,6 +12,7 @@
     "recoverButton": "Recover",
     "signUpTitle": "Sign Up",
     "signUpButton": "Register",
+    "panel":"Panel",
     "profile": {
         "title": "Edit Profile",
         "name": "Name",

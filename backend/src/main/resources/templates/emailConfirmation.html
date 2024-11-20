@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fbf5f3; /* --container-color */
+            color: #262626; /* --text-color */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff; /* --card-background */
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .email-header {
+            background: #397f0a; /* --background-header */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .email-body {
+            padding: 20px;
+        }
+        .email-footer {
+            background: #f1f1f1; /* --background-footer */
+            color: #555555;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .button {
+            display: inline-block;
+            background: #397f0a; /* --button-background */
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background: #397f0a; /* Cor mais escura para o hover */
+        }
+        .code {
+            font-weight: bold;
+            color: #397f0a; /* Cor do código */
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>Confirmação de Cadastro</h1>
+        </div>
+        <div class="email-body">
+            <p>Olá, <strong th:text="${name}">Usuário</strong>,</p>
+            <p>Obrigado por se cadastrar. Para ativar sua conta, use o código de validação abaixo:</p>
+            <p class="code" th:text="${validationCode}">123456</p>
+            <p>O código expira em 24 horas.</p>
+            <p>Se você não solicitou este cadastro, ignore este e-mail.</p>
+        </div>
+        <div class="email-footer">
+            <p>Equipe do Leilão</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,8 +3,8 @@
     border: 1px solid #aaa9a9;
     border-radius: 5px;
     padding: 10px;
-    background-color: #a19768;
-    color: white;
+    background-color: var(--background-header);
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,7 +55,7 @@
     height: 40px;
     border-radius: 50%;
     background-color: #5da531;
-    color: white;
+    color: var(--text-color);
     border: none;
     font-size: 16px;
     display: flex;
@@ -96,12 +96,12 @@
 }
 
 .header .fa {
-    color: white;
+    color: var(--text-color);
    
 }
 
 .header a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -112,6 +112,19 @@
 .languageWrapper .languageMenu {
     display: block;
 }
+
+.themeToggleButton {
+    margin-left: 10px;
+    background-color: inherit;
+    border: none; 
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .themeToggleButton i {
+    font-size: x-large; 
+  }
 
 @media (max-width: 768px) {
     .header {

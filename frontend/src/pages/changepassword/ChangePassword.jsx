@@ -49,11 +49,12 @@ const ChangePassword = () => {
                 </div>
 
                 <div className={styles.field}>
-                    <PasswordValidation password={password} setPassword={setPassword} />
+                    <PasswordValidation className={styles.inputField} password={password} setPassword={setPassword} />
                 </div>
 
                 <div className={styles.field}>
                     <PasswordConfirmation
+                        className={styles.inputField}
                         password={password}
                         confirmPassword={confirmPassword}
                         onConfirmPasswordChange={onConfirmPasswordChange}

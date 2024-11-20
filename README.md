@@ -33,6 +33,13 @@ tipo de leilão desenvolver deixado à escolha do aluno
   - [x] Edição do perfil, com campos dos dados pessoais, documentos, endereço completo e foto de perfil - somente pessoa física;
   - [x] Validar o CPF;
   - [x] A tela deverá ser chamada a partir da área logada;
+
+### Funcionalidade:
+- Recuperação de senha - apenas Back End:
+  - [x] enviar código de recuperação por e-mail;
+  - [x] utilizando o código enviado por e-mail, implemente a alteração de senha;
+  - [x] utilize DTOs.
+
 ### Desafio sem prova 
 - 1º Desafio:
   - [x] A senha deve ter no mínimo 6 caracteres e conter pelo menos:
@@ -51,6 +58,11 @@ tipo de leilão desenvolver deixado à escolha do aluno
     - [x] Utilizar CSS em módulo.
   - Tela Home:
     - [x] Complementar a dashboard e utilizar gráficos para exibir alguns dados que você define como relevante.
+- 4º Desafio:
+  - Recuperação de Senha:
+    - [x] Template de e-mail personalizado;
+    - [x] Ao realizar o cadastro, fazer a confirmação do cadastro via e-mail. Só permitir acesso ao painel quando o cadastro estiver validado;
+
 
 
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './dashboard.module.css';
 import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { useTranslation } from 'react-i18next';
@@ -70,13 +69,13 @@ const Dashboard = () => {
     return (
         <div className={styles.dashboardContainer}>
             <div className={styles.leftSection}>
-                <Card title={t('dashboard.auctions')} >
+                <Card title={t('dashboard.auctions')} className={styles.card}>
                     <div className={styles.cardContent}>
                         <p><strong>{leiloesAtivos}</strong> {t('dashboard.moment')}</p>
                         <Bar data={leiloesData} options={{ responsive: true }} />
                     </div>
                 </Card>
-                <Card title={t('dashboard.auctioned')}>
+                <Card title={t('dashboard.auctioned')} className={styles.card}>
                     <ul className={styles.cardList}>
                         {ultimosItensArrematados.map((item, index) => (
                             <li key={index}>
@@ -88,7 +87,7 @@ const Dashboard = () => {
             </div>
 
             <div className={styles.centerSection}>
-                <Card title={t('dashboard.monthly')}>
+                <Card title={t('dashboard.monthly')} className={styles.card}>
                     <div className={styles.cardContent}>
                         <Bar data={vendasMensaisData} options={{ responsive: true }} />
                     </div>
@@ -96,7 +95,7 @@ const Dashboard = () => {
             </div>
 
             <div className={styles.rightSection}>
-                <Card title={t('dashboard.subscribed')}>
+                <Card title={t('dashboard.subscribed')} className={styles.card}>
                     <ul className={styles.cardList}>
                         {ultimosUsuariosCadastrados.map((usuario, index) => (
                             <li key={index}>{usuario}</li>
@@ -104,7 +103,7 @@ const Dashboard = () => {
                     </ul>
                 </Card>
 
-                <Card title={t('dashboard.sales')}>
+                <Card title={t('dashboard.sales')} className={styles.card}>
                     <div className={styles.cardContent}>
                         <p>
                             <strong>{totalVendas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong> {t('dashboard.realized')}
@@ -113,13 +112,6 @@ const Dashboard = () => {
                     </div>
                 </Card>
             </div>
-
-            {/* Botões para troca de idioma 
-            <div className={styles.languageOptions}>
-                <Button label="English" onClick={() => changeLanguage('en')} />
-                <Button label="Português" onClick={() => changeLanguage('pt')} />
-            </div>
-            */}
         </div>
     );
 };

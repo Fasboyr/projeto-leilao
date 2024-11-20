@@ -36,9 +36,9 @@ tipo de leilão desenvolver deixado à escolha do aluno
 
 ### Funcionalidade:
 - Recuperação de senha - apenas Back End:
-  - [ ] enviar código de recuperação por e-mail;
-  - [ ] utilizando o código enviado por e-mail, implemente a alteração de senha;
-  - [ ] utilize DTOs.
+  - [x] enviar código de recuperação por e-mail;
+  - [x] utilizando o código enviado por e-mail, implemente a alteração de senha;
+  - [x] utilize DTOs.
 
 ### Desafio sem prova 
 - 1º Desafio:
@@ -60,8 +60,8 @@ tipo de leilão desenvolver deixado à escolha do aluno
     - [x] Complementar a dashboard e utilizar gráficos para exibir alguns dados que você define como relevante.
 - 4º Desafio:
   - Recuperação de Senha:
-    - [ ] Template de e-mail personalizado;
-    - [ ] Ao realizar o cadastro, fazer a confirmação do cadastro via e-mail. Só permitir acesso ao painel quando o cadastro estiver validado;
+    - [x] Template de e-mail personalizado;
+    - [x] Ao realizar o cadastro, fazer a confirmação do cadastro via e-mail. Só permitir acesso ao painel quando o cadastro estiver validado;
 
 
 

@@ -33,7 +33,10 @@
         "confirm":"Confirme a senha",
         "change":"Alterar"
     },
-
+    "confirmation": {
+        "title": "Confirmar Cadastro",
+        "validation": "Validar"
+    },
     "validation":{
         "rule":"Regras",
         "length":"A senha deve ter no mínimo 6 caracteres.",

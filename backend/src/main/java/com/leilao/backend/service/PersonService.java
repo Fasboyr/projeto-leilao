@@ -16,6 +16,7 @@ import org.thymeleaf.context.Context;
 
 import com.leilao.backend.model.Person;
 import com.leilao.backend.model.PersonAuthRequestDTO;
+import com.leilao.backend.model.PersonRecoverRequestDTO;
 import com.leilao.backend.repository.PersonRepository;
 
 import jakarta.mail.MessagingException;
@@ -35,7 +36,7 @@ public class PersonService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
-    public String passwordCodeRequest(PersonAuthRequestDTO personAuthRequestDTO) {
+    public String passwordCodeRequest(PersonRecoverRequestDTO personAuthRequestDTO) {
         Optional<Person> person = personRepository.findByEmail(personAuthRequestDTO.getEmail());
         if (person != null) {
             Person personDatabase = person.get();
@@ -81,7 +82,7 @@ public class PersonService implements UserDetailsService {
 
         // Define validade do código (24 horas)
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MINUTE, 2);
+        calendar.add(Calendar.HOUR, 24);
         person.setValidationCodeValidity(calendar.getTime());
 
         person.setValidated(false); // Usuário ainda não validado
@@ -175,6 +176,15 @@ public class PersonService implements UserDetailsService {
         personRepository.save(person);
 
         return "Senha redefinida com sucesso.";
+    }
+
+    public String changePassword(String email, String newPassword){
+        Person person = personRepository.findByEmail(email)
+        .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
+
+        person.setPassword(newPassword);
+        personRepository.save(person);
+        return "Senha alterada com sucesso.";
     }
 
 }

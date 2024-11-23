@@ -25,6 +25,10 @@
         "state": "State",
         "save": "Save"
     },
+    "confirmation": {
+        "title": "Validate Registration",
+        "validation": "Validate"
+    },
     "change": {
         "title": "Change Password",
         "code": "Code sent to your E-mail",

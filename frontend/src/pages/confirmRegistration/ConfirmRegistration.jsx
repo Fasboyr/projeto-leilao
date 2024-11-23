@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import styles from './Login.module.css'; // Importa o CSS module
+import styles from './ConfirmRegistration.module.css'; // Importa o CSS module
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import PersonService from "../../services/PersonService";
 
-const Login = () => {
-    const [user, setUser] = useState({ email: "", password: "" });
+const ConfirmRegistration = () => {
+    const [user, setUser] = useState({ email: "", passwword:"", validationCode: "" });
     const navigate = useNavigate();
     const { t } = useTranslation();
     const personService = new PersonService();
@@ -26,14 +25,19 @@ const Login = () => {
         setUser({ ...user, [input.target.name]: input.target.value });
     }
 
-    const login = async () => {
-        try{
+    const handleCancel = () => {
+        navigate("/login");
+    };
+
+    const confirmar = async () => {
+        try {
+
+            const confirm = await personService.validate(user);
             const response =  await personService.login(user);
             let token = response.token;
             localStorage.setItem("token", token);
-            localStorage.setItem("email", user.email);
             navigate("/");
-        } catch(err){
+        } catch (err) {
             console.log(err);
             alert("usuário ou senha incorretos")
         }
@@ -42,12 +46,12 @@ const Login = () => {
 
     return (
         <div className={styles.loginGrid}>
-            <Card title="Login" className={styles.loginBackgroundColor}>
+            <Card title={t('confirmation.title')} className={styles.loginBackgroundColor}>
                 <div className="field">
-                    <InputText 
-                        onChange={handleChange} 
-                        name="email" 
-                        id="email" 
+                    <InputText
+                        onChange={handleChange}
+                        name="email"
+                        id="email"
                         inputClassName="w-full"
                         className="w-full"
                         placeholder={t('email')}
@@ -65,20 +69,23 @@ const Login = () => {
                         pt={{ iconField: { root: { className: 'w-full' } } }}
                     />
                 </div>
-                <div className={styles.buttonContainer}>
-                    <Button 
-                        onClick={login} 
-                        label={t('login')} 
-                        className={styles.loginButton} 
+                <div className="field">
+                    <InputText
+                        onChange={handleChange}
+                        name="validationCode"
+                        id="validationCode"
+                        inputClassName="w-full"
+                        className="w-full"
+                        placeholder={t('change.code')}
                     />
                 </div>
-                <div className={styles.loginOptions}>
-                    <Link className={styles.options} to="/register">{t('register')}</Link>
-                    <Link className={styles.options} to="/recover">{t('recover')}</Link>
+                <div className={styles.changeOptions}>
+                    <Button label={t('cancel')} size="small" className={styles.changeButtons} onClick={handleCancel}/>
+                    <Button label={t('confirmation.validation')} size="small" className={styles.changeButtons} onClick={confirmar}/>
                 </div>
             </Card>
         </div>
     );
 }
 
-export default Login;
+export default ConfirmRegistration;

@@ -1,0 +1,64 @@
+
+
+.loginGrid {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.loginBackgroundColor {
+    background-color: var( --card-background);
+    color: var(--text-color);
+}
+
+
+
+.pCardTitle {
+    text-align: center;
+}
+
+.loginOptions {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.options{
+    color: var(--text-color);
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.loginButton {
+    width: 100%;
+    max-width: 200px;
+    height: 3rem;
+    font-size: 1.1rem;
+    background-color: var(--button-background);
+}
+
+.passwordField {
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    box-shadow: none;
+}
+
+.changeOptions {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 0.5rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.changeButtons{
+    background-color: var(--button-background);
+}

@@ -54,6 +54,7 @@
 
   --card-background:  #2e4b2b;
   --button-background: #3c9b1e; 
+  --button-background-hover: #338a18; 
   --input-background: #3a3a3a; 
   --input-text-color: #f5f5f5; 
 }
@@ -69,6 +70,7 @@
 
   --card-background: #d3ebc4;
   --button-background: #397f0a;
+  --button-background-hover: #2f6708;
   --input-background: #ffffff; 
   --input-text-color: #262626;
 }

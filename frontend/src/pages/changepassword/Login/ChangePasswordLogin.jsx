@@ -8,12 +8,15 @@ import PasswordConfirmation from '../../../components/password/passwordConfirmat
 import styles from './ChangePasswordLogin.module.css';
 import { useNavigate } from 'react-router-dom';
 import PersonService from '../../../services/PersonService';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ChangePasswordLogin = () => {
-    const [user, setUser] = useState({ email: "", newPassword: ""});
+    const [user, setUser] = useState({ email: "", newPassword: "" });
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [confirmationError, setConfirmationError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { t } = useTranslation();
     const navigate = useNavigate();
     const personService = new PersonService();
@@ -30,14 +33,71 @@ const ChangePasswordLogin = () => {
         navigate("/");
     };
 
+
+    const validateFields = () => {
+        const {newPassword } = user;
+        let missingFields = [];
+
+        if (!newPassword) missingFields.push(t('profile.password'));
+
+        if (missingFields.length > 0) {
+            toast.error(`${t('error.errorFieldsRequired')}: ${missingFields.join(', ')}`);
+            return false;
+        }
+
+        if (confirmationError) {
+            toast.error(confirmationError);
+            return false;
+        }
+
+        return true;
+    };
+
+    const handleServerError = (err) => {
+        if (err.response) {
+            const { status, data } = err.response;
+            const message = data?.message || "";
+            switch (status) {
+                case 400:
+                    if (message.includes("expirado")) {
+                        toast.error(t('error.codeExpired')); // Código expirado
+                    } else if (message.includes("inválido")) {
+                        toast.error(t('error.codeInvalid')); // Código inválido
+                    } else {
+                        toast.error(message); // Outras mensagens genéricas
+                    }
+                    break;
+                case 401:
+                    toast.error(t('error.invalidCredentials')); // Credenciais inválidas
+                    break;
+                case 404:
+                    toast.error(t('error.userNotFound')); // Credenciais inválidas
+                    break;
+                case 500:
+                    toast.error(t('error.errorServer'));
+                    break;
+                default:
+                    toast.error(t('error.errorUnexpected'));
+            }
+        } else {
+            toast.error(t('error.errorNetwork'));
+        }
+    };
+
     const changeLogin = async () => {
+        if (!validateFields()) return;
+
+        setIsLoading(true);
         try {
             console.log('User:', user)
             const response = await personService.changeLogin(user);
+            toast.success(t('alert.passwordChange'));
             navigate("/");
         } catch (err) {
-            console.log(err);
-            alert("usuário ou senha incorretos")
+            console.error(err);
+            handleServerError(err);
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -48,7 +108,7 @@ const ChangePasswordLogin = () => {
             setConfirmationError('');
             setUser((prevState) => ({
                 ...prevState,
-                newPassword: confirmPasswordValue, 
+                newPassword: confirmPasswordValue,
             }));
         }
     };
@@ -78,7 +138,13 @@ const ChangePasswordLogin = () => {
                 </div>
                 <div className={styles.changeOptions}>
                     <Button label={t('cancel')} size="small" className={styles.changeButtons} onClick={handleCancel} />
-                    <Button label={t('change.change')} size="small" className={styles.changeButtons} onClick={changeLogin} />
+                    <Button 
+                     label={isLoading ? null : t('change.change')}
+                    size="small" 
+                    className={styles.changeButtons} 
+                    onClick={changeLogin}
+                    disabled={isLoading}
+                    icon={isLoading ? "pi pi-spin pi-spinner" : null} />
                 </div>
             </Card>
         </div>

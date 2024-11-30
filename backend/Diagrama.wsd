@@ -1,0 +1,62 @@
+@startuml Diagrama
+class Person {
+    - name: String
+    - email: String
+    - password: String
+    - validationCode: String
+    - validationCodeValidity: Date
+}
+
+class Profile {
+    - name: String
+}
+
+class Category {
+    - name: String
+    - observation: String
+}
+
+class Auction {
+    - title: String
+    - description: String
+    - startDateTime: DateTime
+    - endDateTime: DateTime
+    - status: String
+    - observation: String
+    - incrementValue: Float
+    - minimumBid: Float
+}
+
+class Image {
+    - auction: Auction
+    - registrationDateTime: DateTime
+    - imageName: String
+}
+
+class Bid {
+    - bidValue: Float
+    - dateTime: DateTime
+}
+
+class Feedback {
+    - comment: String
+    - rating: Integer
+    - dateTime: DateTime
+}
+
+class ProfilePerson {
+
+}
+ 
+/' Person "1" -- "0..*" ProfilePerson : associated with
+Profile "1" -- "0..*" ProfilePerson : associated with '/
+Person "0..*" <-> "1..*" Profile
+(Person, Profile) .. ProfilePerson : associated class
+Category "1" <-- "0..*" Auction
+Person "1" <-- "0..*" Auction
+Auction "1" <--> "0..*" Image
+Auction "1" <--> "0..*" Bid
+Person "1" <-- "0..*" Bid
+Person "1" <-- "0..*" Feedback
+Person "1" <-- "0..*" Category
+@enduml

@@ -13,9 +13,16 @@
     "signUpTitle": "Sign Up",
     "signUpButton": "Register",
     "panel":"Panel",
+    "warning":{
+        "return":"Return",
+        "notFound": "The page you are looking for was not found.",
+        "unauthorized": "You do not have the necessary authorization to access this page."
+    },
     "profile": {
         "title": "Edit Profile",
         "name": "Name",
+        "email": "E-mail",
+        "password": "Password",
         "nameInput": "Full Name",
         "cpf": "CPF",
         "rg": "RG",
@@ -23,7 +30,12 @@
         "road": "Road",
         "city": "City",
         "state": "State",
-        "save": "Save"
+        "save": "Save",
+        "validationCode": "Validation Code"
+    },
+    "confirmation": {
+        "title": "Validate Registration",
+        "validation": "Validate"
     },
     "change": {
         "title": "Change Password",
@@ -44,6 +56,28 @@
         "weak":"Weak",
         "medium":"Medium",
         "strong":"Strong"
+    },
+    "error":{
+        "errorFieldsRequired": "Please fill out all the fields",
+        "codeExpired": "The validation code has expired",
+        "codeInvalid": "The validation code is invalid",
+        "invalidCredentials": "Authentication failed. Please check the entered email and password",
+        "userNotFound": "User not found. Please check the entered email",
+        "errorUnauthorized": "You are not authorized to perform this action. Please check your credentials.",
+        "errorNotFound": "The requested resource was not found. Please try again.",
+        "errorServer": "A server error occurred. Please try again later.",
+        "errorUnexpected": "An unexpected error occurred. Please contact support.",
+        "errorNetwork": "Network error. Please check your internet connection and try again.",
+        "emailServerError": "An error has occurred while trying to send the e-mail. Please, try again later.",
+        "notValidated": "Account not validated. Please validate your registration"
+    },
+    "alert":{
+        "creationSucess": "Your account has been created. Check your e-mail for the validation code",
+        "emailError": "E-mail already registered",
+        "validationSucess": "You account has been validated. Welcome aboard!",
+        "validationError": "Validation Error: ",
+        "passwordRecovery": "Please check your e-mail for the password reset code",
+        "passwordChange":"Your password has been altered"
     },
     "footer": {
         "contact": "Contact",

@@ -46,10 +46,10 @@ public class Person implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "{name.required}")
+    @NotBlank(message = "Nome obrigatório")
     private String name;
 
-    @Email(message = "{name.invalid}")
+    @Email(message = "E-mail Inválido")
     @Column(unique = true)
     private String email;
 

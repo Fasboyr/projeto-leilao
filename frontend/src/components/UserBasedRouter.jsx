@@ -7,7 +7,7 @@ const UserBasedRoute = ({ allowedRoles }) => {
 
     const isAuthorized = token && allowedRoles.includes(userType);
 
-    return isAuthorized ? <Outlet /> : <Navigate to='/' />;
+    return isAuthorized ? <Outlet /> : <Navigate to='/unauthorized' />;
 };
 
 export default UserBasedRoute;

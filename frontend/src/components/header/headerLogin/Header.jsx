@@ -49,7 +49,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link className={styles.headerNavLink} to="/change">
+            <Link className={styles.headerNavLink} to="/changeLogin">
               {t('change.title')}
             </Link>
           </li>

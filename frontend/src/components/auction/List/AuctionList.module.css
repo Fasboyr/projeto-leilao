@@ -1,0 +1,83 @@
+.card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.auctionItem {
+    color: var(--text-color);
+    background-color: var(--container-color) ;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.auctionItem:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.auctionContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.5rem;
+}
+.modalContainer{
+    width: 50vw
+
+}
+
+.modalContent {
+    line-height: 1.5;
+}
+
+.modalContent p {
+    margin: 0.5rem 0;
+}
+
+
+.modalActionButtons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .auctionContent {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .auctionContent h3 {
+        font-size: 1rem;
+    }
+
+    .auctionContent p {
+        font-size: 0.875rem;
+    }
+
+    .actionButtons {
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+
+    .customButton{
+        font-size: small;
+    }
+
+    .modalContainer{
+        width: 100vw
+    
+    }
+}
+

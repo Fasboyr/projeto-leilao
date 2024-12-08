@@ -1,5 +1,6 @@
 package com.leilao.backend.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
@@ -33,13 +36,13 @@ public class Auction {
     @Column(name = "description")
     private String description;
 
-    @NotBlank(message = "Hora de início obrigatório")
+    @NotNull(message = "A data e hora de início não podem ser nulas")
     @Column(name = "start_Date_Time")
-    private Date startDateTime;
+    private LocalDateTime startDateTime;
 
-    @NotBlank(message = "Hora de encerramento obrigatório")
+    @NotNull(message = "A data e hora de término não podem ser nulas")
     @Column(name = "end_Date_Time")
-    private Date endDateTime;
+    private LocalDateTime endDateTime;
 
     @NotBlank(message = "Status obrigatório")
     @Column(name = "status")
@@ -49,11 +52,11 @@ public class Auction {
     @Column(name = "observation")
     private String observation;
 
-    @NotBlank(message = "Valor de incremento obrigatório")
+    @Min(value = 0, message = "O valor de incremento deve ser maior ou igual a 0")
     @Column(name = "increment_Value")
     private float incrementValue;
 
-    @NotBlank(message = "Lance mínimo obrigatório")
+    @Min(value = 0, message = "O valor de incremento deve ser maior ou igual a 0")
     @Column(name = "minimum_Bid")
     private float minimumBid;
 
@@ -69,6 +72,6 @@ public class Auction {
     private List<Image> images;
 
     @OneToMany(mappedBy = "auction", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Bid> bids;
+    private List<AuctionBid> bids;
 
 }

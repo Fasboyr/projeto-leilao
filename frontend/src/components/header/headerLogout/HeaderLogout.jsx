@@ -37,7 +37,7 @@ const Header = () => {
             <h2><GiBullHorns/></h2>
             <nav className={style.navLeft}>
                 <ul>
-                    <li><a href="/login">{t('login')}</a></li>
+                    <li><a href="/">{t('login')}</a></li>
                     <li><a href="/recover">{t('recoverTitle')}</a></li>
                     <li><a href="/register">{t('register')}</a></li>
                 </ul>

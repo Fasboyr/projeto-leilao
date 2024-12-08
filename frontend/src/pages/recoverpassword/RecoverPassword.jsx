@@ -17,7 +17,7 @@ const RecoverPassword = () => {
     const personService = new PersonService();
 
     const handleCancel = () => {
-        navigate("/login");
+        navigate("/");
     };
 
     const handleChange = (input) => {

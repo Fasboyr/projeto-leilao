@@ -53,9 +53,7 @@ const ConfirmRegistration = () => {
 
         setIsLoading(true); // Ativa o estado de carregamento
         try {
-            await personService.validate(user); // Validação do código
-            const response = await personService.login(user); // Autenticação do usuário
-            localStorage.setItem("token", response.token);
+            await personService.validate(user);
             toast.success(t('alert.validationSucess')); // Mensagem de sucesso
             navigate("/");
         } catch (err) {

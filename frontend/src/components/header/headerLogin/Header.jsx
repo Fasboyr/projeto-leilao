@@ -8,7 +8,7 @@ import { GiBullHorns } from "react-icons/gi";
 const Header = () => {
   const { t, i18n } = useTranslation();
   const [languageMenuVisible, setLanguageMenuVisible] = useState(false);
-  const [isDarkTheme, setIsDarkTheme] = useState(true); 
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   const currentLanguage = i18n.language;
 
   const alterarTema = () => {
@@ -16,12 +16,12 @@ const Header = () => {
     const temaNovo = temaAtual === "dark" ? "light" : "dark";
     document.body.setAttribute("data-theme", temaNovo);
     localStorage.setItem("theme", temaNovo);
-    setIsDarkTheme(temaNovo === "dark"); 
+    setIsDarkTheme(temaNovo === "dark");
   };
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
-    setLanguageMenuVisible(false); 
+    setLanguageMenuVisible(false);
   };
 
   const toggleLanguageMenu = () => {
@@ -36,15 +36,18 @@ const Header = () => {
 
   // Verifica se o usuário é um admin
   const userType = localStorage.getItem("userType");
-  const isAdmin = userType === "admin";
+
+  const isAdmin = (userType == 'ADMIN');
+
+
 
   return (
     <div className={styles.header}>
-      <h2><GiBullHorns/></h2>
+      <h2><GiBullHorns /></h2>
       <nav className={styles.navLeft}>
         <ul>
           <li>
-            <Link className={styles.headerNavLink} to="/">
+            <Link className={styles.headerNavLink} to="/home">
               {t('home')}
             </Link>
           </li>
@@ -53,13 +56,26 @@ const Header = () => {
               {t('change.title')}
             </Link>
           </li>
-          {isAdmin && (  // Item só visível para admin
-            <li>
-              <Link className={styles.headerNavLink} to="/admin">
-                {t('panel')}
-              </Link>
-            </li>
+          <li>
+            <Link className={styles.headerNavLink} to="/auction">
+              {t('auction')}
+            </Link>
+          </li>
+          {isAdmin && (
+            <>
+              <li>
+                <Link className={styles.headerNavLink} to="/admin">
+                  {t('panel')}
+                </Link>
+              </li>
+              <li>
+                <Link className={styles.headerNavLink} to="/category">
+                  {t('panelCategory')}
+                </Link>
+              </li>
+            </>
           )}
+
         </ul>
       </nav>
       <nav className={styles.navRight}>

@@ -1,0 +1,55 @@
+.categoryGrid {
+    display: flex;
+    flex-direction: column;
+    /* Alinha os elementos verticalmente */
+    align-items: center;
+    /* Centraliza horizontalmente */
+    color: var(--text-color);
+}
+
+
+
+
+.fieldGroup {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.field label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.categoryOptions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.categoryButtons {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+}
+
+
+
+@media (max-width: 768px) {
+    .categoryGrid {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+}

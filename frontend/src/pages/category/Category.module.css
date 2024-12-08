@@ -1,0 +1,21 @@
+.categoryPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+
+
+
+
+
+
+

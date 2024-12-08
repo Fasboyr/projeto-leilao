@@ -28,6 +28,12 @@
   color: white;
 }
 
+.p-tabview .p-tabview-panels {
+  background: var(--card-background);
+}
+
+
+
 .App-link {
   color: #61dafb;
 }
@@ -74,4 +80,7 @@
   --input-background: #ffffff; 
   --input-text-color: #262626;
 }
+
+
+
 

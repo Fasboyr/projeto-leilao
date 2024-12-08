@@ -1,0 +1,49 @@
+.auctionGrid {
+    display: flex;
+    flex-direction: column;
+    /* Alinha os elementos verticalmente */
+    align-items: center;
+    /* Centraliza horizontalmente */
+    color: var(--text-color);
+}
+
+
+.fieldGroup {
+    width: 100%;
+    max-width: 600px;
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.field label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.auctionOptions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.auctionButtons {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+}
+
+
+
+@media (max-width: 768px) {
+    .auctionGrid {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+}

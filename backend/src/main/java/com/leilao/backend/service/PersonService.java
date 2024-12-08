@@ -19,6 +19,7 @@ import org.thymeleaf.context.Context;
 import com.leilao.backend.model.Person;
 import com.leilao.backend.model.PersonAuthRequestDTO;
 import com.leilao.backend.model.PersonRecoverRequestDTO;
+import com.leilao.backend.model.Enum.UserType;
 import com.leilao.backend.repository.PersonRepository;
 
 import jakarta.mail.MessagingException;
@@ -38,7 +39,14 @@ public class PersonService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
+
+    public Person findByEmail(String email) throws UsernameNotFoundException {
+        return personRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
     public String passwordCodeRequest(PersonRecoverRequestDTO personAuthRequestDTO) {
+        System.out.println("Entrou no code request do service");
         Optional<Person> person = personRepository.findByEmail(personAuthRequestDTO.getEmail());
 
         if (person.isEmpty() || person == null) {
@@ -88,6 +96,7 @@ public class PersonService implements UserDetailsService {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.HOUR, 24);
         person.setValidationCodeValidity(calendar.getTime());
+        person.setUserType(UserType.C);
 
         person.setValidated(false); // Usuário ainda não validado
         Person personSaved = personRepository.save(person);

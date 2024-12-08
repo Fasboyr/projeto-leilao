@@ -22,14 +22,14 @@ const Login = () => {
         if (savedEmail) {
             setUser((prevState) => ({ ...prevState, email: savedEmail }));
         }
-    }, []); 
+    }, []);
 
     const handleChange = (input) => {
         setUser({ ...user, [input.target.name]: input.target.value });
     }
 
     const validateFields = () => {
-        const {email, password, } = user;
+        const { email, password, } = user;
         let missingFields = [];
 
         if (!email) missingFields.push(t('profile.email'));
@@ -42,18 +42,28 @@ const Login = () => {
         }
         return true;
     };
-   
+
 
     const login = async () => {
         if (!validateFields()) return;
-        try{
-            const response =  await personService.login(user);
+        try {
+            const response = await personService.login(user);
+            console.log(response);
+
             let token = response.token;
+            let userType = response.userType
+            let userId = response.id
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
-            localStorage.setItem("userType", 'user');
-            navigate("/");
-        } catch(err){
+            localStorage.setItem("userId", userId)
+            
+            if (userType == "A") {
+                localStorage.setItem("userType", 'ADMIN');
+            } else {
+                localStorage.setItem("userType", 'CLIENT');
+            }
+            navigate("/home");
+        } catch (err) {
             console.log(err);
             handleServerError(err);
         }
@@ -87,10 +97,10 @@ const Login = () => {
         <div className={styles.loginGrid}>
             <Card title="Login" className={styles.loginBackgroundColor}>
                 <div className="field">
-                    <InputText 
-                        onChange={handleChange} 
-                        name="email" 
-                        id="email" 
+                    <InputText
+                        onChange={handleChange}
+                        name="email"
+                        id="email"
                         inputClassName="w-full"
                         className="w-full"
                         placeholder={t('email')}
@@ -98,21 +108,21 @@ const Login = () => {
                     />
                 </div>
                 <div className="field">
-                    <Password 
-                        onChange={handleChange} 
-                        name="password" 
-                        id="password" 
+                    <Password
+                        onChange={handleChange}
+                        name="password"
+                        id="password"
                         placeholder={t('password')}
-                        feedback={false} 
+                        feedback={false}
                         toggleMask
                         pt={{ iconField: { root: { className: 'w-full' } } }}
                     />
                 </div>
                 <div className={styles.buttonContainer}>
-                    <Button 
-                        onClick={login} 
-                        label={t('login')} 
-                        className={styles.loginButton} 
+                    <Button
+                        onClick={login}
+                        label={t('login')}
+                        className={styles.loginButton}
                     />
                 </div>
                 <div className={styles.loginOptions}>

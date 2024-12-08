@@ -8,11 +8,11 @@ const Logout = () =>{
     const logout = () =>{
         localStorage.removeItem("token");
         localStorage.removeItem("email");
-        navigate("/login")
+        navigate("/")
     }
     
     return (
-        <a href="/login" onClick={(e) => {
+        <a href="/" onClick={(e) => {
           e.preventDefault(); 
           logout();
         }} style={{color: 'var(--text-color)', textDecoration: 'none' }}>

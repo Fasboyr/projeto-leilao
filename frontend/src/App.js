@@ -18,6 +18,8 @@ import ConfirmRegistration from './pages/confirmRegistration/ConfirmRegistration
 import ChangePasswordLogin from './pages/changepassword/Login/ChangePasswordLogin';
 import NotFound from './pages/NotFound/NotFound';
 import Unauthorized from './pages/Unauthorized/Unauthorized';
+import Category from './pages/category/Category';
+import Auction from './pages/auction/Auction';
 
 function App() {
   return (
@@ -36,17 +38,19 @@ function App() {
         />
         <Routes>
           <Route element={<PrivateRouter />}>
-            <Route element={<UserBasedRoute allowedRoles={['admin', 'user']} />}>
-              <Route path='/' element={<SimpleLayout><Home /></SimpleLayout>} />
+            <Route element={<UserBasedRoute allowedRoles={['ADMIN', 'CLIENT']} />}>
+              <Route path='/home' element={<SimpleLayout><Home /></SimpleLayout>} />
               <Route path='/profile' element={<SimpleLayout><ProfilePage /></SimpleLayout>} />
               <Route path='/changeLogin' element={<SimpleLayout><ChangePasswordLogin /></SimpleLayout>} />
+              <Route path='/auction' element={<SimpleLayout><Auction /></SimpleLayout>} />
             </Route>
-            <Route element={<UserBasedRoute allowedRoles={['admin']} />}>
+            <Route element={<UserBasedRoute allowedRoles={['ADMIN']} />}>
               <Route path='/admin' element={<SimpleLayout><AdminDashboard /></SimpleLayout>} />
+              <Route path='/category' element={<SimpleLayout><Category /></SimpleLayout>} />
             </Route>
           </Route>
           <Route path='/recover' element={<LogoutLayout>< RecoverPassword /></LogoutLayout>} />
-          <Route path='/login' element={<LogoutLayout><Login /></LogoutLayout>} />
+          <Route path='/' element={<LogoutLayout><Login /></LogoutLayout>} />
           <Route path='/register' element={<LogoutLayout><Register /></LogoutLayout>} />
           <Route path='/changeLogout' element={<LogoutLayout><ChangePasswordLogout /></LogoutLayout>} />
           <Route path='/confirm' element={<LogoutLayout><ConfirmRegistration /></LogoutLayout>} />

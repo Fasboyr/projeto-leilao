@@ -11,9 +11,9 @@ const NotFound = () => {
 
     const goBack = () => {
         if (isAuthenticated) {
-            navigate('/');
+            navigate('/home');
         } else {
-            navigate('/login');
+            navigate('/');
         }
     }
 

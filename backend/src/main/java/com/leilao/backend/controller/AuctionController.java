@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leilao.backend.model.Auction;
+import com.leilao.backend.model.AuctionCreateDTO;
 import com.leilao.backend.service.AuctionService;
 
 @RestController
@@ -24,13 +25,13 @@ public class AuctionController {
     @Autowired
     private AuctionService auctionService;
 
-    @PostMapping
-    public Auction create(@RequestBody Auction auction) {
+    @PostMapping("/public")
+    public Auction create(@RequestBody AuctionCreateDTO auction) {
         return auctionService.create(auction);
     }
 
-    @PutMapping
-    public Auction update(@RequestBody Auction auction) {
+    @PutMapping("/public")
+    public Auction update(@RequestBody AuctionCreateDTO auction) {
         return auctionService.update(auction);
     }
 
@@ -39,7 +40,12 @@ public class AuctionController {
         return auctionService.listAll();
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/public")
+    public List<Auction> listAllPublic() {
+        return auctionService.listAllPublic();
+    }
+
+    @DeleteMapping("/public/{id}")
     public void delete(@PathVariable("id") Long id) {
         auctionService.delete(id);
     }

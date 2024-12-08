@@ -30,7 +30,7 @@ const ChangePasswordLogin = () => {
 
 
     const handleCancel = () => {
-        navigate("/");
+        navigate("/home");
     };
 
 
@@ -92,7 +92,7 @@ const ChangePasswordLogin = () => {
             console.log('User:', user)
             const response = await personService.changeLogin(user);
             toast.success(t('alert.passwordChange'));
-            navigate("/");
+            navigate("/home");
         } catch (err) {
             console.error(err);
             handleServerError(err);

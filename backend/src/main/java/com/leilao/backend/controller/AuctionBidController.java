@@ -13,34 +13,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leilao.backend.model.Bid;
-import com.leilao.backend.service.BidService;
+import com.leilao.backend.model.AuctionBid;
+import com.leilao.backend.service.AuctionBidService;
 
 @RestController
 @RequestMapping("/api/bid")
 @CrossOrigin
-public class BidController {
+public class AuctionBidController {
 
     @Autowired
-    private BidService bidService;
+    private AuctionBidService AuctionBidService;
 
     @PostMapping
-    public Bid create(@RequestBody Bid bid) {
-        return bidService.create(bid);
+    public AuctionBid create(@RequestBody AuctionBid bid) {
+        return AuctionBidService.create(bid);
     }
 
     @PutMapping
-    public Bid update(@RequestBody Bid bid) {
-        return bidService.update(bid);
+    public AuctionBid update(@RequestBody AuctionBid bid) {
+        return AuctionBidService.update(bid);
     }
 
     @GetMapping
-    public List<Bid> listAll() {
-        return bidService.listAll();
+    public List<AuctionBid> listAll() {
+        return AuctionBidService.listAll();
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
-        bidService.delete(id);
+        AuctionBidService.delete(id);
     }
 }

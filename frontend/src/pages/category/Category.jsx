@@ -3,12 +3,14 @@ import { Card, TabView, TabPanel } from 'primereact';
 import styles from './Category.module.css';
 import CategoryList from '../../components/category/List/CategoryList';
 import CategoryForm from '../../components/category/Form/CategoryForm';
+import { useTranslation } from 'react-i18next';
 
 const Category = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isEditing, setIsEditing] = useState(false);
     const [currentCategory, setCurrentCategory] = useState(null);
     const [updateKey, setUpdateKey] = useState(0); // chave para forçar a atualização da lista
+    const { t } = useTranslation();
 
     const onEdit = (category) => {
         setCurrentCategory(category);
@@ -32,16 +34,16 @@ const Category = () => {
 
     return (
         <div className={styles.categoryPage}>
-            <Card className={styles.card} title="Gerenciamento de Categorias">
+            <Card className={styles.card} title={t('category.title')}>
                 <TabView
                     className={`${styles.card} ${styles.customTabView}`}
                     activeIndex={activeIndex}
                     onTabChange={handleTabChange}
                 >
-                    <TabPanel header="Lista de Categorias" className={styles.customTabPanel}>
+                    <TabPanel header={t('category.categoryList')} className={styles.customTabPanel}>
                         <CategoryList onEdit={onEdit} onUpdate={updateKey} />
                     </TabPanel>
-                    <TabPanel header="Cadastro de Categoria" className={styles.customTabPanel}>
+                    <TabPanel header={t('category.categoryForm')} className={styles.customTabPanel}>
                         <CategoryForm category={currentCategory} isEditing={isEditing} onCancel={onCancel} />
                     </TabPanel>
                 </TabView>

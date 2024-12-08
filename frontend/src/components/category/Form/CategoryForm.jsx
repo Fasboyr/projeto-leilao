@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button, InputText } from 'primereact';
 import styles from './CategoryForm.module.css';
 import CategoryService from '../../../services/CategoryService';
+import { useTranslation } from 'react-i18next';
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CategoryForm = ({ category, isEditing, onCancel }) => {
     const [name, setName] = useState('');
@@ -9,7 +13,7 @@ const CategoryForm = ({ category, isEditing, onCancel }) => {
     const [id, setId] = useState(null); // Nova linha para armazenar o ID
     const categoryService = new CategoryService();
     const userEmail = localStorage.getItem("email");
-
+    const { t } = useTranslation();
     useEffect(() => {
         if (isEditing && category) {
             console.log(category);
@@ -37,6 +41,25 @@ const CategoryForm = ({ category, isEditing, onCancel }) => {
             onCancel(); // Limpa o formulário após salvar
         } catch (err) {
             console.error("Erro ao salvar categoria:", err);
+            handleServerError(err);
+        }
+    };
+
+
+    const handleServerError = (err) => {
+        if (err.response) {
+            switch (err.response.status) {
+                case 404:
+                    toast.error(t('error.categoryNotFound')); // Categoria não encontrado
+                    break;
+                case 500:
+                    toast.error(t('error.errorServer')); // Erro interno do servidor
+                    break;
+                default:
+                    toast.error(t('error.errorUnexpected')); // Erro inesperado
+            }
+        } else {
+            toast.error(t('error.errorNetwork')); // Erro de rede
         }
     };
 
@@ -44,33 +67,33 @@ const CategoryForm = ({ category, isEditing, onCancel }) => {
         <div className={styles.categoryGrid}>
             <div className={styles.fieldGroup}>
                 <div className={styles.field}>
-                    <label htmlFor="name">Nome</label>
+                    <label htmlFor="name">{t('categoryForm.name')}</label>
                     <InputText
                         id="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Digite o nome da categoria"
+                        placeholder={t('categoryForm.namePlaceHolder')}
                     />
                 </div>
                 <div className={styles.field}>
-                    <label htmlFor="observation">Observação</label>
+                    <label htmlFor="observation">{t('categoryForm.observation')}</label>
                     <InputText
                         id="observation"
                         value={observation}
                         onChange={(e) => setObservation(e.target.value)}
-                        placeholder="Digite uma observação (opcional)"
+                        placeholder={t('categoryForm.observationPlaceholder')}
                     />
                 </div>
             </div>
 
             <div className={styles.categoryOptions}>
                 <Button
-                    label="Cancelar"
+                    label={t('cancel')}
                     className={`${styles.categoryButtons} p-button-secondary`}
                     onClick={onCancel}
                 />
                 <Button
-                    label="Salvar"
+                    label={t('profile.save')}
                     className={styles.categoryButtons}
                     onClick={onSave}
                 />

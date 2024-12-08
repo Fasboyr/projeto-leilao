@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import styles from './CategoryList.module.css';
 import CategoryService from '../../../services/CategoryService';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useTranslation } from 'react-i18next';
 
 const CategoryList = ({ onEdit, onUpdate }) => {
     const [categories, setCategories] = useState([]);
     const categoryService = new CategoryService();
+    const { t } = useTranslation();
 
     const fetchCategories = async () => {
         try {
@@ -13,6 +17,7 @@ const CategoryList = ({ onEdit, onUpdate }) => {
             setCategories(data);
         } catch (err) {
             console.error("Erro ao buscar categorias:", err);
+            handleServerError(err);
         }
     };
 
@@ -27,7 +32,25 @@ const CategoryList = ({ onEdit, onUpdate }) => {
             await categoryService.deleteCategory(id);
             fetchCategories(); // Recarrega a lista após exclusão
         } catch (err) {
-            console.error("Erro ao deletar categoria:", err);
+            handleServerError(err);
+        }
+    };
+
+
+    const handleServerError = (err) => {
+        if (err.response) {
+            switch (err.response.status) {
+                case 404:
+                    toast.error(t('error.categoryNotFound')); // Leilão não encontrado
+                    break;
+                case 500:
+                    toast.error(t('error.errorServer')); // Erro interno do servidor
+                    break;
+                default:
+                    toast.error(t('error.errorUnexpected')); // Erro inesperado
+            }
+        } else {
+            toast.error(t('error.errorNetwork')); // Erro de rede
         }
     };
 
@@ -42,12 +65,12 @@ const CategoryList = ({ onEdit, onUpdate }) => {
                         </div>
                         <div className={styles.actionButtons}>
                             <Button
-                                label="Editar"
+                                label={t('editButton')}
                                 className={`p-button-warning ${styles.customButton}`}
                                 onClick={() => onEdit(category)}
                             />
                             <Button
-                                label="Excluir"
+                                label={t('deleteButton')}
                                 className={`p-button-danger ${styles.customButton}`}
                                 onClick={() => onDelete(category.id)}
                             />

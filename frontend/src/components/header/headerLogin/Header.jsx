@@ -58,7 +58,7 @@ const Header = () => {
           </li>
           <li>
             <Link className={styles.headerNavLink} to="/auction">
-              {t('auction')}
+              {t('auction.auction')}
             </Link>
           </li>
           {isAdmin && (
@@ -70,7 +70,7 @@ const Header = () => {
               </li>
               <li>
                 <Link className={styles.headerNavLink} to="/category">
-                  {t('panelCategory')}
+                  {t('category.category')}
                 </Link>
               </li>
             </>

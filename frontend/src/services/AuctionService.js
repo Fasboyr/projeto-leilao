@@ -14,6 +14,13 @@ class AuctionService extends BaseService{
         return response.data;
     }
 
+    async createAuctionWithImage(data) {
+        const response = await this.api.post(`${this.endPoint}/public/image`, data, {
+            headers: { "Content-Type": "multipart/form-data" },
+        });
+        return response.data;
+    }
+
     async updateAuction(data){
         const response = await this.api.put(`${this.endPoint}/public`, data);
         return response.data;

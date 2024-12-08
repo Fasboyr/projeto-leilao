@@ -3,10 +3,11 @@ import { Card, TabView, TabPanel } from 'primereact';
 import styles from './Auction.module.css';
 import AuctionList from '../../components/auction/List/AuctionList';
 import AuctionForm from '../../components/auction/Form/AuctionForm';
+import { useTranslation } from 'react-i18next';
 
 const Auction = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-
+    const { t } = useTranslation();
     const [isEditing, setIsEditing] = useState(false);
     const [currentAuction, setCurrentAuction] = useState(null);
     const [updateKey, setUpdateKey] = useState(0); // chave para forçar a atualização da lista
@@ -33,16 +34,16 @@ const Auction = () => {
 
     return (
         <div className={styles.auctionPage}>
-            <Card className={styles.card} title="Gerenciamento de Leilões">
+            <Card className={styles.card} title={t('auction.title')}>
                 <TabView
                     className={`${styles.card} ${styles.customTabView}`}
                     activeIndex={activeIndex}
                     onTabChange={handleTabChange}
                 >
-                    <TabPanel header="Lista de Leilões" className={styles.customTabPanel}>
+                    <TabPanel header={t('auction.auctionList')} className={styles.customTabPanel}>
                         <AuctionList onEdit={onEdit} onUpdate={updateKey} />
                     </TabPanel>
-                    <TabPanel header="Cadastro de Leilões" className={styles.customTabPanel}>
+                    <TabPanel header={t('auction.auctionForm')} className={styles.customTabPanel}>
                         <AuctionForm auction={currentAuction} isEditing={isEditing} onCancel={onCancel} />
                     </TabPanel>
                 </TabView>

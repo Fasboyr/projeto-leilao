@@ -13,8 +13,10 @@
     "signUpTitle": "Cadastro",
     "signUpButton": "Cadastrar",
     "panel": "Painel",
-    "warning":{
-        "return":"Voltar",
+    "editButton": "Editar",
+    "deleteButton": "Excluir",
+    "warning": {
+        "return": "Voltar",
         "notFound": "A página que você está procurando não foi encontrada.",
         "unauthorized": "Você não tem a autorização necessária para acessar esta página."
     },
@@ -31,7 +33,7 @@
         "city": "Cidade",
         "state": "Estado",
         "save": "Salvar",
-         "validationCode": "Código de Validação"
+        "validationCode": "Código de Validação"
     },
     "change": {
         "title": "Mudar Senha",
@@ -63,6 +65,8 @@
         "codeInvalid": "O código de validação é inválido",
         "invalidCredentials": "Falha na autenticação. Verifique o e-mail e a senha inserido",
         "userNotFound": "Usuário não encontrado. Verifique o e-mail inserido",
+        "auctionNotFound": "Leilão não encontrado.",
+        "categoryNotFound": "Categoria não encontrada.",
         "errorUnauthorized": "Você não está autorizado a realizar esta ação. Por favor, verifique suas credenciais.",
         "errorNotFound": "O recurso solicitado não foi encontrado. Por favor, tente novamente.",
         "errorServer": "Ocorreu um erro no servidor. Por favor, tente novamente mais tarde.",
@@ -112,5 +116,54 @@
         "subscribed": "Últimos Usuários Cadastrados",
         "sales": "Total de Vendas Realizadas",
         "realized": "em vendas realizadas."
+    },
+    "auction": {
+        "auction": "Leilão",
+        "title": "Gerenciamento de Leilões",
+        "auctionList": "Lista de Leilões",
+        "auctionForm": "Cadastro de Leilões"
+    },
+    "auctionForm": {
+        "title": "Título",
+        "titlePlaceholder": "Digite o título do leilão",
+        "description": "Descrição",
+        "descriptionPlaceholder": "DIgite a descrição do leilão",
+        "category": "Categoria",
+        "categoryPlaceholder": "Selecione uma categoria",
+        "startTime": "Data e Hora de Início",
+        "timePlaceholder": "DD/MM/AAAA HH/MM",
+        "endTime": "Data e Hora de Término",
+        "observation": "Observação",
+        "observationPlaceholder": "Digite uma observação (opcional)",
+        "increment": "Incremento",
+        "incrementPlaceholder": "Digite o valor de incremento",
+        "minimumBid": "Lance Mínimo",
+        "minimumBidPlaceholder": "Digiter o lance mínimo",
+        "image": "Imagens",
+        "chooseImage": "Escolher Imagens"
+    },
+    "auctionList": {
+        "detailsButton": "Ver Detalhes",
+        "bidButton": "Dar Lance",
+        "description": "Descrição",
+        "startTime": "Início",
+        "endTime": "Término",
+        "observation": "Observação",
+        "increment": "Incremento",
+        "minimumBid": "Lance Mínimo",
+        "category": "Categoria",
+        "responsible": "Responsável"
+    },
+    "category": {
+        "category": "Categoria",
+        "title": "Gerenciamento de Categorais",
+        "categoryList": "Lista de Categorias",
+        "categoryForm": "Cadastro de Categorias"
+    },
+    "categoryForm":{
+        "name":"Nome",
+        "namePlaceHolder": "Digite o nome da categoria",
+        "observation":"Observação",
+        "observationPlaceholder":"Digite uma observação (opcional)" 
     }
 }

@@ -12,9 +12,11 @@
     "recoverButton": "Recover",
     "signUpTitle": "Sign Up",
     "signUpButton": "Register",
-    "panel":"Panel",
-    "warning":{
-        "return":"Return",
+    "panel": "Panel",
+    "editButton": "Edit",
+    "deleteButton": "Delete",
+    "warning": {
+        "return": "Return",
         "notFound": "The page you are looking for was not found.",
         "unauthorized": "You do not have the necessary authorization to access this page."
     },
@@ -52,17 +54,19 @@
         "number": "The password must have at least 1 number.",
         "special": "The password must have at least 1 special character.",
         "confirmation": "The passwords have to match.",
-        "prompt":"Enter a password",
-        "weak":"Weak",
-        "medium":"Medium",
-        "strong":"Strong"
+        "prompt": "Enter a password",
+        "weak": "Weak",
+        "medium": "Medium",
+        "strong": "Strong"
     },
-    "error":{
+    "error": {
         "errorFieldsRequired": "Please fill out all the fields",
         "codeExpired": "The validation code has expired",
         "codeInvalid": "The validation code is invalid",
         "invalidCredentials": "Authentication failed. Please check the entered email and password",
         "userNotFound": "User not found. Please check the entered email",
+        "auctionNotFound": "Auction not found.",
+        "categoryNotFound": "Category not found.",
         "errorUnauthorized": "You are not authorized to perform this action. Please check your credentials.",
         "errorNotFound": "The requested resource was not found. Please try again.",
         "errorServer": "A server error occurred. Please try again later.",
@@ -71,13 +75,13 @@
         "emailServerError": "An error has occurred while trying to send the e-mail. Please, try again later.",
         "notValidated": "Account not validated. Please validate your registration"
     },
-    "alert":{
+    "alert": {
         "creationSucess": "Your account has been created. Check your e-mail for the validation code",
         "emailError": "E-mail already registered",
         "validationSucess": "You account has been validated. Welcome aboard!",
         "validationError": "Validation Error: ",
         "passwordRecovery": "Please check your e-mail for the password reset code",
-        "passwordChange":"Your password has been altered"
+        "passwordChange": "Your password has been altered"
     },
     "footer": {
         "contact": "Contact",
@@ -105,12 +109,61 @@
         "july": "Jul",
         "august": "Aug",
         "auctions": "Active Auctions",
-        "moment":"auctions active at the moment",
+        "moment": "auctions active at the moment",
         "total": "Total Sales",
         "monthly": "Monthly Sales Total (Brazilian Reais)",
         "auctioned": "Last Auctioned Items (Brazilian Reais)",
         "subscribed": "Last Registered Users",
         "sales": "Total Sales (Brazilian Reais)",
         "realized": "in sales."
+    },
+    "auction": {
+        "auction": "Auction",
+        "title": "Auction Management",
+        "auctionList": "Auction List",
+        "auctionForm": "Auction Registration"
+    },
+    "auctionForm": {
+        "title": "Title",
+        "titlePlaceholder": "Enter auction title",
+        "description": "Description",
+        "descriptionPlaceholder": "Enter auction description",
+        "category": "Category",
+        "categoryPlaceholder": "Select a category",
+        "startTime": "Start Date and Time",
+        "timePlaceholder": "DD/MM/YYYY HH/MM",
+        "endTime": "End Date and Time",
+        "observation": "Observation",
+        "observationPlaceholder": "Enter an observation (optional)",
+        "increment": "Increment",
+        "incrementPlaceholder": "Enter the increment value",
+        "minimumBid": "Minimum Bid",
+        "minimumBidPlaceholder": "Enter the minimum bid",
+        "image": "Images",
+        "chooseImage": "Choose Images"
+    },
+    "auctionList": {
+        "detailsButton": "View Details",
+        "bidButton": "Place Bid",
+        "description": "Description",
+        "startTime": "Start Time",
+        "endTime": "End Time",
+        "observation": "Observation",
+        "increment": "Increment",
+        "minimumBid": "Minimum Bid",
+        "category": "Category",
+        "responsible": "Responsible"
+    },
+    "category": {
+        "category": "Category",
+        "title": "Category Management",
+        "categoryList": "Category List",
+        "categoryForm": "Category Registration"
+    },
+    "categoryForm": {
+        "name": "Name",
+        "namePlaceHolder": "Enter category name",
+        "observation": "Observation",
+        "observationPlaceholder": "Enter an observation (optional)"
     }
 }

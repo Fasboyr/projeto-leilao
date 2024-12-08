@@ -35,27 +35,7 @@ public class AuctionService {
     @Autowired
     private AuthPersonProvider authPersonProvider;
 
-    public Auction create(AuctionCreateDTO auctionCreateDTO) {
-        Person person = authPersonProvider.getAuthenticatedUserByEmail(auctionCreateDTO.getUserEmail());
-        Category category = categoryService.findByName(auctionCreateDTO.getCategory());
-
-        Auction auction = new Auction();
-
-        auction.setTitle(auctionCreateDTO.getTitle());
-        auction.setDescription(auctionCreateDTO.getDescription());
-        auction.setStartDateTime(auctionCreateDTO.getStartDateTime());
-        auction.setEndDateTime(auctionCreateDTO.getEndDateTime());
-        auction.setObservation(auctionCreateDTO.getObservation());
-        auction.setIncrementValue(auctionCreateDTO.getIncrementValue());
-        auction.setMinimumBid(auctionCreateDTO.getMinimumBid());
-        auction.setCategory(category);
-        auction.setPerson(person);
-        auction.setStatus("Aberto");
-
-        return auctionRepository.save(auction);
-    }
-
-    public Auction createWithImage(AuctionCreateDTO auctionCreateDTO, List<MultipartFile> images) {
+    public Auction create(AuctionCreateDTO auctionCreateDTO, List<MultipartFile> images) {
         Person person = authPersonProvider.getAuthenticatedUserByEmail(auctionCreateDTO.getUserEmail());
         Category category = categoryService.findByName(auctionCreateDTO.getCategory());
 
@@ -96,7 +76,7 @@ public class AuctionService {
     }
 
     private String saveImageToFileSystem(MultipartFile image) throws Exception {
-        Path uploadDir = Paths.get("uploads/images");
+        Path uploadDir = Paths.get("frontend/public/images");
         if (!Files.exists(uploadDir)) {
             Files.createDirectories(uploadDir);
         }
@@ -105,7 +85,7 @@ public class AuctionService {
         return fileName;
     }
 
-    public Auction update(AuctionCreateDTO auctionCreateDTO) {
+    public Auction update(AuctionCreateDTO auctionCreateDTO, List<MultipartFile> images) {
         System.out.println("Entrou no update");
 
         Auction auctionSaved = auctionRepository.findById(auctionCreateDTO.getId())
@@ -119,6 +99,11 @@ public class AuctionService {
         auctionSaved.setIncrementValue(auctionCreateDTO.getIncrementValue());
         auctionSaved.setMinimumBid(auctionCreateDTO.getMinimumBid());
         auctionSaved.setCategory(category);
+
+        if (images != null && !images.isEmpty()) {
+            List<Image> imageList = saveImages(images, auctionSaved);
+            auctionSaved.setImages(imageList);
+        }
         return auctionRepository.save(auctionSaved);
     }
 
@@ -137,7 +122,12 @@ public class AuctionService {
 
     public List<Auction> listAllPublic() {
         // Retorna apenas leilões com status "Aberto"
-        return auctionRepository.findByStatus("Aberto");
+        try {
+            return auctionRepository.findByStatus("Aberto");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao listar leilões públicos", e);
+        }
     }
 
     public Auction findById(Long id) {

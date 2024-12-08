@@ -28,20 +28,17 @@ public class AuctionController {
     private AuctionService auctionService;
 
     @PostMapping("/public")
-    public Auction create(@RequestBody AuctionCreateDTO auction) {
-        return auctionService.create(auction);
-    }
-
-    @PostMapping("/public/image")
-    public Auction createWithImage(
+    public Auction create(
             @RequestPart("auction") AuctionCreateDTO auctionCreateDTO,
             @RequestPart(value = "images", required = false) List<MultipartFile> images) {
-        return auctionService.createWithImage(auctionCreateDTO, images);
+        return auctionService.create(auctionCreateDTO, images);
     }
 
     @PutMapping("/public")
-    public Auction update(@RequestBody AuctionCreateDTO auction) {
-        return auctionService.update(auction);
+    public Auction update(
+        @RequestPart("auction") AuctionCreateDTO auctionCreateDTO,
+        @RequestPart(value = "images", required = false) List<MultipartFile> images) {
+        return auctionService.update(auctionCreateDTO, images);
     }
 
     @GetMapping
@@ -51,6 +48,7 @@ public class AuctionController {
 
     @GetMapping("/public")
     public List<Auction> listAllPublic() {
+        System.out.println("Entrou no list all public");
         return auctionService.listAllPublic();
     }
 

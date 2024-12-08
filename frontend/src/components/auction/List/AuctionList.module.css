@@ -2,6 +2,7 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
+    
 }
 
 .auctionItem {
@@ -14,6 +15,23 @@
     cursor: pointer;
     transition: transform 0.2s;
 }
+
+.imageGallery {
+    display: flex; /* Ativa o flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-wrap: wrap; /* Permite quebra de linha para imagens */
+    gap: 10px; /* Espaço entre as imagens */
+    margin: 15px 0; /* Espaço antes e depois da galeria */
+}
+.galleryImage {
+    width: 80%; /* 25% da largura do elemento pai */
+    height: 80%; /* 25% da altura do elemento pai */
+    object-fit: cover;
+    border-radius: 5px; /* Arredonda os cantos */
+    border: 1px solid #ccc; /* Adiciona uma borda leve */
+}
+
 
 .auctionItem:hover {
     transform: scale(1.02);

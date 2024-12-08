@@ -108,40 +108,9 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${timePart}:00`;
     };
 
+    
+
     const onSave = async () => {
-        console.log('Entrou no on save');
-
-        try {
-            const data = {
-                id: auctionId ? auctionId : null,
-                title,
-                description,
-                startDateTime: formatDateTimeForJSON(startDateTime), // Converter para o formato JSON
-                endDateTime: formatDateTimeForJSON(endDateTime),
-                observation,
-                incrementValue,
-                minimumBid,
-                category: category.label,
-                userEmail
-            };
-
-            if (isEditing) {
-                console.log('DATA No update: ', data);
-
-                await auctionService.updateAuction(data); // Atualiza se estiver editando
-            } else {
-                console.log('Entrou no create');
-                await auctionService.createAuction(data); // Cria novo leilão
-            }
-            onCancel(); // Limpa o formulário após salvar
-        } catch (err) {
-            console.error("Erro ao salvar leilão:", err);
-            handleServerError(err);
-        }
-    };
-
-
-    const onSaveWithImage = async () => {
         try {
             const formData = new FormData();
 
@@ -166,9 +135,9 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
             images.forEach((image) => formData.append("images", image));
 
             if (isEditing) {
-                await auctionService.updateAuction(formData); // Atualiza se estiver editando
+                // await auctionService.updateAuctionWithImage(formData); 
             } else {
-                await auctionService.createAuctionWithImage(formData); // Cria novo leilão
+                await auctionService.createAuction(formData); // Cria novo leilão
             }
 
             onCancel(); // Limpa o formulário após salvar

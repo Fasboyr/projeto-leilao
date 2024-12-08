@@ -2,6 +2,7 @@ package com.leilao.backend.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,5 +30,6 @@ public class Image {
 
     @ManyToOne
     @JoinColumn(name = "auction_id")
+    @JsonIgnore
     private Auction auction;
 }

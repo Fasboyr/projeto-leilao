@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button, Dialog } from 'primereact';
 import styles from './AuctionList.module.css';
 import AuctionService from '../../../services/AuctionService';
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from 'react-i18next';
@@ -12,6 +11,8 @@ const AuctionList = ({ onEdit, onUpdate }) => {
     const [selectedAuction, setSelectedAuction] = useState(null); // Para o modal
     const [isModalVisible, setIsModalVisible] = useState(false);
     const auctionService = new AuctionService();
+    const IMAGE_BASE_PATH = '/images';
+
 
     const { t } = useTranslation();
     const userId = localStorage.getItem("userId");
@@ -23,7 +24,7 @@ const AuctionList = ({ onEdit, onUpdate }) => {
             console.log('dATA: ', data);
             console.log('User id:', userId);
         } catch (err) {
-            console.error("Erro ao buscar categorias:", err);
+            console.error("Erro ao buscar leilões:", err);
             handleServerError(err);
         }
     };
@@ -57,7 +58,7 @@ const AuctionList = ({ onEdit, onUpdate }) => {
             await auctionService.deleteAuction(id);
             fetchAuctions(); // Recarrega a lista após exclusão
         } catch (err) {
-            console.error("Erro ao deletar categoria:", err);
+            console.error("Erro ao deletar leilao:", err);
             handleServerError(err);
         }
     };
@@ -172,6 +173,7 @@ const AuctionList = ({ onEdit, onUpdate }) => {
                         <p><strong>{t('auctionList.minimumBid')}:</strong> {selectedAuction.minimumBid}</p>
                         <p><strong>{t('auctionList.category')}:</strong> {selectedAuction.category.name}</p>
                         <p><strong>{t('auctionList.responsible')}:</strong> {selectedAuction.person.name}</p>
+
                         <div className={styles.modalActionButtons}>
                             {selectedAuction.person.id != userId && (
                                 <>
@@ -196,6 +198,17 @@ const AuctionList = ({ onEdit, onUpdate }) => {
                                     />
                                 </>
                             )}
+                        </div>
+
+                        <div className={styles.imageGallery}>
+                            {selectedAuction.images && selectedAuction.images.map((image, index) => (
+                                <img
+                                    key={index}
+                                    src={`${IMAGE_BASE_PATH}/${image.imageName}`}
+                                    alt={`Imagem ${index + 1} de ${selectedAuction.title}`}
+                                    className={styles.galleryImage}
+                                />
+                            ))}
                         </div>
                     </div>
                 )}

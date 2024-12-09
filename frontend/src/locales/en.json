@@ -140,7 +140,11 @@
         "minimumBid": "Minimum Bid",
         "minimumBidPlaceholder": "Enter the minimum bid",
         "image": "Images",
-        "chooseImage": "Choose Images"
+        "chooseImage": "Choose Images",
+        "savedImages": "Saved Images",
+        "undoRemoveButton": "Undo Remove",
+        "removeSavedButton": "Remove Image",
+        "uploadImages": "Upload Image"
     },
     "auctionList": {
         "detailsButton": "View Details",

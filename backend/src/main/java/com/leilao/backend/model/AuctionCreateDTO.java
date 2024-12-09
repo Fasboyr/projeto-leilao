@@ -1,6 +1,7 @@
 package com.leilao.backend.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Data;
 
@@ -16,6 +17,8 @@ public class AuctionCreateDTO {
     private float minimumBid;
     private String category;
     private String userEmail;
+    private List<ImageDTO> image;
+
 }
 
 

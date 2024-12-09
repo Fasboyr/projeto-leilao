@@ -140,7 +140,12 @@
         "minimumBid": "Lance Mínimo",
         "minimumBidPlaceholder": "Digiter o lance mínimo",
         "image": "Imagens",
-        "chooseImage": "Escolher Imagens"
+        "chooseImage": "Escolher Imagens",
+        "savedImages": "Imagens Salvas",
+        "undoRemoveButton": "Cancelar Remoção",
+        "removeSavedButton": "Remover Imagem",
+        "uploadImages": "Subir Imagem"
+
     },
     "auctionList": {
         "detailsButton": "Ver Detalhes",

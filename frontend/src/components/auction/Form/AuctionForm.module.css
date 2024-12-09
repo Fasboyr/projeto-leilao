@@ -39,6 +39,35 @@
 }
 
 
+.imagePreview {
+    display: flex; /* Ativa o flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-wrap: wrap; /* Permite quebra de linha para imagens */
+    gap: 10px; /* Espaço entre as imagens */
+    margin: 15px 0; /* Espaço antes e depois da galeria */
+}
+.galleryImage {
+    width: 80%; /* 25% da largura do elemento pai */
+    height: 80%; /* 25% da altura do elemento pai */
+    object-fit: cover;
+    border-radius: 5px; /* Arredonda os cantos */
+    border: 1px solid #ccc; /* Adiciona uma borda leve */
+}
+
+.imageDeleted {
+    opacity: 0.5; /* Reduz a opacidade para dar efeito de desativado */
+    filter: grayscale(100%); /* Converte a imagem para tons de cinza */
+}
+
+.imagePreview {
+    position: relative;
+    margin: 10px;
+}
+
+
+
+
 
 @media (max-width: 768px) {
     .auctionGrid {

@@ -34,6 +34,13 @@ public class ImageService {
         imageRepository.delete(imageSaved);
     }
 
+    
+    public void deleteByName(String name) {
+        Image imageSaved = imageRepository.findByImageName(name)
+                .orElseThrow(() -> new NoSuchElementException("Objeto não encontrado."));
+        imageRepository.delete(imageSaved);
+    }
+
     public List<Image> listAll() {
         return imageRepository.findAll();
     }

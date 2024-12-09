@@ -18,15 +18,17 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
     const [observation, setObservation] = useState('');
     const [incrementValue, setIncrementValue] = useState(0);
     const [minimumBid, setMinimumBid] = useState(0);
-    const [category, setCategory] = useState(null); // Estado para categoria selecionada
-    const [categories, setCategories] = useState([]); // Estado para lista de categorias
-    const [auctionId, setAuctionId] = useState(null); // Nova linha para armazenar o ID
+    const [category, setCategory] = useState(null);
+    const [categories, setCategories] = useState([]);
+    const [auctionId, setAuctionId] = useState(null);
+    const [images, setImages] = useState([]);
+    const [savedImages, setSavedImages] = useState([]);
+
     const auctionService = new AuctionService();
     const categoryService = new CategoryService();
     const userEmail = localStorage.getItem("email");
     const { t } = useTranslation();
-
-    const [images, setImages] = useState([]);
+    const IMAGE_BASE_PATH = '/images';
 
     const onImageUpload = (event) => {
         const uploadedFiles = event.files;
@@ -37,14 +39,21 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
         setImages(images.filter((img) => img.name !== file.name));
     };
 
-
+    const onSavedImageRemove = (file) => {
+        setSavedImages((prevImages) =>
+            prevImages.map((img) =>
+                img.name === file.name
+                    ? { ...img, delete: true }
+                    : img
+            )
+        );
+    };
 
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const data = await categoryService.listCategory(); // Supondo que há um método para listar categorias
+                const data = await categoryService.listCategory();
                 setCategories(data);
-
             } catch (err) {
                 console.error("Erro ao buscar categorias:", err);
             }
@@ -53,9 +62,7 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
         fetchCategories();
 
         if (isEditing && auction) {
-            console.log('Auction: ', auction);
-
-            setAuctionId(auction.id)
+            setAuctionId(auction.id);
             setTitle(auction.title);
             setDescription(auction.description);
             setStartDateTime(formatDateTimeToBrazilian(auction.startDateTime));
@@ -65,29 +72,29 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
             setIncrementValue(auction.incrementValue);
             setMinimumBid(auction.minimumBid);
             setCategory({ label: auction.category.name, value: auction.category });
+
+            if (auction.images && auction.images.length > 0) {
+                const existingImages = auction.images.map((image) => ({
+                    name: image.imageName,
+                    preview: `${IMAGE_BASE_PATH}/${image.imageName}`,
+                    delete: false,
+                }));
+                setSavedImages(existingImages);
+            }
         }
     }, [isEditing, auction]);
 
     const formatDateTimeToBrazilian = (dateTimeString) => {
-        if (!dateTimeString) {
-            console.error("Data e hora inválidas fornecidas:", dateTimeString);
-            return null;
-        }
+        if (!dateTimeString) return null;
 
         try {
-            // Parse da string para um objeto Date
             const date = new Date(dateTimeString);
-
-            // Extrair partes da data
             const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês começa de 0
+            const month = String(date.getMonth() + 1).padStart(2, '0');
             const year = date.getFullYear();
-
-            // Extrair partes da hora
             const hours = String(date.getHours()).padStart(2, '0');
             const minutes = String(date.getMinutes()).padStart(2, '0');
 
-            // Formatar no padrão dd/MM/aaaa hh:mm
             return `${day}/${month}/${year} ${hours}:${minutes}`;
         } catch (error) {
             console.error("Erro ao formatar a data e hora:", error);
@@ -97,24 +104,15 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
 
     const formatDateTimeForJSON = (dateString) => {
         if (!dateString) return null;
-
-        // Separar data e hora
         const [datePart, timePart] = dateString.split(' ');
-
-        // Separar dia, mês e ano
         const [day, month, year] = datePart.split('/');
-
-        // Combinar no formato ISO esperado pelo backend
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T${timePart}:00`;
     };
-
-    
 
     const onSave = async () => {
         try {
             const formData = new FormData();
 
-            // Cria o JSON do AuctionCreateDTO
             const auctionData = {
                 id: auctionId ? auctionId : null,
                 title,
@@ -125,43 +123,40 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
                 incrementValue,
                 minimumBid,
                 category: category.label,
-                userEmail
+                userEmail,
+                image: savedImages ? savedImages : null,
             };
 
-            // Adiciona a parte 'auction' como JSON
             formData.append("auction", new Blob([JSON.stringify(auctionData)], { type: "application/json" }));
-
-            // Adiciona as imagens ao FormData
             images.forEach((image) => formData.append("images", image));
 
             if (isEditing) {
-                // await auctionService.updateAuctionWithImage(formData); 
+                await auctionService.updateAuction(formData);
             } else {
-                await auctionService.createAuction(formData); // Cria novo leilão
+                await auctionService.createAuction(formData);
             }
 
-            onCancel(); // Limpa o formulário após salvar
+            onCancel();
         } catch (err) {
             console.error("Erro ao salvar leilão:", err);
             handleServerError(err);
         }
     };
 
-
     const handleServerError = (err) => {
         if (err.response) {
             switch (err.response.status) {
                 case 404:
-                    toast.error(t('error.auctionNotFound')); // Leilão não encontrado
+                    toast.error(t('error.auctionNotFound'));
                     break;
                 case 500:
-                    toast.error(t('error.errorServer')); // Erro interno do servidor
+                    toast.error(t('error.errorServer'));
                     break;
                 default:
-                    toast.error(t('error.errorUnexpected')); // Erro inesperado
+                    toast.error(t('error.errorUnexpected'));
             }
         } else {
-            toast.error(t('error.errorNetwork')); // Erro de rede
+            toast.error(t('error.errorNetwork'));
         }
     };
 
@@ -248,34 +243,79 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
                     />
                 </div>
                 <div className={styles.field}>
-                    <label htmlFor="images">{t('auctionForm.image')}</label>
-                    <FileUpload
-                        name="images"
-                        accept="image/*"
-                        multiple
-                        customUpload
-                        uploadHandler={(e) => onImageUpload(e)}
-                        onRemove={(e) => onImageRemove(e.file)}
-                        chooseLabel={t('auctionForm.chooseImage')}
-                        uploadLabel="Upload"
-                        cancelLabel={t('cancel')}
-                    />
+                    <div className={styles.field}>
+                        {savedImages.length > 0 && ( // Renderiza apenas se houver imagens salvas
+                            <>
+                                <label>{t('auctionForm.savedImages')}</label>
+                                <div className={styles.imagePreviewContainer}>
+                                    {savedImages.map((image, index) => (
+                                        <div
+                                            key={index}
+                                            className={`${styles.imagePreview} ${image.delete ? styles.imageDeleted : ''}`} // Adiciona estilo acinzentado se delete=true
+                                        >
+                                            <img
+                                                src={image.preview}
+                                                alt={image.name}
+                                                className={`${styles.galleryImage} ${image.delete ? styles.imageDeleted : ''}`} // Acinzentar imagem
+                                            />
+                                            <Button
+                                                icon={image.delete ? "pi pi-undo" : "pi pi-times"} // Altera o ícone com base no estado
+                                                className={`p-button-sm ${image.delete ? "p-button-secondary" : "p-button-danger"}`} // Altera estilo do botão
+                                                onClick={() =>
+                                                    setSavedImages((prevImages) =>
+                                                        prevImages.map((img) =>
+                                                            img.name === image.name
+                                                                ? { ...img, delete: !img.delete } // Alterna o estado delete
+                                                                : img
+                                                        )
+                                                    )
+                                                }
+                                                tooltip={
+                                                    image.delete
+                                                        ? t('auctionForm.undoRemoveButton') 
+                                                        : t('auctionForm.removeSavedButton') 
+                                                }
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                    </div>
+
+
+                    {/* Componente FileUpload para novas imagens */}
+                    <div className={styles.field}>
+                        <label>{t('auctionForm.uploadImages')}</label>
+                        <FileUpload
+                            name="images"
+                            accept="image/*"
+                            multiple
+                            customUpload
+                            uploadHandler={onImageUpload}
+                            onRemove={(e) => onImageRemove(e.file)}
+                            chooseLabel={t('auctionForm.chooseImage')}
+                            uploadLabel="Upload"
+                            cancelLabel={t('cancel')}
+                        />
+                    </div>
+
+
                 </div>
             </div>
-
             <div className={styles.auctionOptions}>
                 <Button
                     label={t('cancel')}
-                    className={`${styles.auctionButtons} p-button-secondary`}
+                    className="p-button-secondary"
                     onClick={onCancel}
                 />
                 <Button
                     label={t('profile.save')}
-                    className={styles.auctionButtons}
                     onClick={onSave}
                 />
             </div>
         </div>
+
     );
 };
 

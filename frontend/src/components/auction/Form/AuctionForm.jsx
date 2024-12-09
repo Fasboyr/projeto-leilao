@@ -30,24 +30,24 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
     const { t } = useTranslation();
     const IMAGE_BASE_PATH = '/images';
 
-    const onImageUpload = (event) => {
-        const uploadedFiles = event.files;
-        setImages([...images, ...uploadedFiles]);
-    };
+    // const onImageUpload = (event) => {
+    //     const uploadedFiles = event.files;
+    //     setImages([...images, ...uploadedFiles]);
+    // };
 
-    const onImageRemove = (file) => {
-        setImages(images.filter((img) => img.name !== file.name));
-    };
+    // const onImageRemove = (file) => {
+    //     setImages(images.filter((img) => img.name !== file.name));
+    // };
 
-    const onSavedImageRemove = (file) => {
-        setSavedImages((prevImages) =>
-            prevImages.map((img) =>
-                img.name === file.name
-                    ? { ...img, delete: true }
-                    : img
-            )
-        );
-    };
+    // const onSavedImageRemove = (file) => {
+    //     setSavedImages((prevImages) =>
+    //         prevImages.map((img) =>
+    //             img.name === file.name
+    //                 ? { ...img, delete: true }
+    //                 : img
+    //         )
+    //     );
+    // };
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -159,6 +159,8 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
             toast.error(t('error.errorNetwork'));
         }
     };
+
+
 
     return (
         <div className={styles.auctionGrid}>
@@ -272,8 +274,8 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
                                                 }
                                                 tooltip={
                                                     image.delete
-                                                        ? t('auctionForm.undoRemoveButton') 
-                                                        : t('auctionForm.removeSavedButton') 
+                                                        ? t('auctionForm.undoRemoveButton')
+                                                        : t('auctionForm.removeSavedButton')
                                                 }
                                             />
                                         </div>
@@ -292,12 +294,66 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
                             accept="image/*"
                             multiple
                             customUpload
-                            uploadHandler={onImageUpload}
-                            onRemove={(e) => onImageRemove(e.file)}
+                            auto
+                            uploadHandler={(event) => {
+                                const uploadedFiles = event.files;
+
+                                setImages((prevImages) => {
+                                    const newFiles = uploadedFiles.filter(
+                                        (file) => !prevImages.some((img) => img.name === file.name)
+                                    );
+                                    return [...prevImages, ...newFiles];
+                                });
+                            }}
+                            onRemove={(e) => {
+                                const removedFile = e.file;
+
+                                // Remove o arquivo do estado corretamente
+                                setImages((prevImages) =>
+                                    prevImages.filter((img) => img.name !== removedFile.name)
+                                );
+                            }}
                             chooseLabel={t('auctionForm.chooseImage')}
-                            uploadLabel="Upload"
                             cancelLabel={t('cancel')}
+                            itemTemplate={(file, props) => (
+                                <div
+                                    className="p-fileupload-item"
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                    }}
+                                >
+                                    <img
+                                        alt={file.name}
+                                        role="presentation"
+                                        src={file.objectURL}
+                                        style={{
+                                            width: '50px',
+                                            height: '50px',
+                                            marginRight: '10px',
+                                            borderRadius: '5px',
+                                        }}
+                                    />
+                                    <span>{file.name}</span>
+                                    <button
+                                        type="button"
+                                        className="p-button p-component p-button-danger p-button-icon-only"
+                                        onClick={() => {
+                                            // Remove manual do arquivo do estado
+                                            setImages((prevImages) =>
+                                                prevImages.filter((img) => img.name !== file.name)
+                                            );
+                                            props.onRemove(); // Atualiza visualmente no FileUpload
+                                        }}
+                                    >
+                                        <span className="pi pi-times"></span>
+                                    </button>
+                                </div>
+                            )}
                         />
+
+
                     </div>
 
 

@@ -118,14 +118,12 @@ public class AuctionService {
 
             imagesToRemove.forEach(image -> {
                 auctionSaved.getImages().remove(image);
-                imageService.deleteByName(image.getImageName()); // Remove do repositório
+                imageService.deleteByName(image.getImageName());
 
                 Path imagePath = Paths.get("frontend/public/images", image.getImageName());
 
-                // Remover imagem do sistema de arquivos
                 try {
                     Files.deleteIfExists(imagePath);
-                    System.out.println("Imagem removida: " + imagePath);
                 } catch (Exception e) {
                     System.err.println("Erro ao remover imagem do sistema de arquivos: " + imagePath);
                     e.printStackTrace();
@@ -134,10 +132,8 @@ public class AuctionService {
         }
 
         if (images != null && !images.isEmpty()) {
-            System.out.print("Imagens: " + images);
-            auctionSaved.getImages().clear();
-            List<Image> imageList = saveImagesIfNotExists(images, auctionSaved, auctionSaved.getImages());
-            auctionSaved.getImages().addAll(imageList);
+            List<Image> newImages = saveImagesIfNotExists(images, auctionSaved, auctionSaved.getImages());
+            auctionSaved.getImages().addAll(newImages);
         }
 
         return auctionRepository.save(auctionSaved);

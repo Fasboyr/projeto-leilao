@@ -71,7 +71,8 @@ const AuctionForm = ({ auction, isEditing, onCancel }) => {
             setObservation(auction.observation);
             setIncrementValue(auction.incrementValue);
             setMinimumBid(auction.minimumBid);
-            setCategory({ label: auction.category.name, value: auction.category });
+            console.log('Category:', auction.category);
+            setCategory({ label: auction.category.name});
 
             if (auction.images && auction.images.length > 0) {
                 const existingImages = auction.images.map((image) => ({
